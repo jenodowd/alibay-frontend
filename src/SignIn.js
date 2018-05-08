@@ -35,7 +35,8 @@ class SignIn extends Component {
     )
 
     fetch('/login', { method: 'POST', body: bod })
-
+    .then(response => response.text())
+    .then(responseBody => JSON.parse(responseBody))
   }
 
   render() {

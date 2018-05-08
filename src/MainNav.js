@@ -11,7 +11,7 @@ class MainNav extends Component {
           <li className="mainNavLI"><Link className="link" to={'/'}> Category 1 </Link> &nbsp; &nbsp; </li> 
           <li className="mainNavLI"><Link className="link" to={'/'}> Category 2 </Link> &nbsp; &nbsp; </li> 
           <li className="mainNavLI"><Link className="link" to={'/'}> Category 3 </Link> &nbsp; &nbsp; </li> 
-          <li className="mainNavLI"><Link className="link" to={'/'}> Category 3 </Link> &nbsp; &nbsp; </li> 
+          <li className="mainNavLI"><Link className="link" to={'/'}> Category 4 </Link> &nbsp; &nbsp; </li> 
         </ul>
       </div>
           )

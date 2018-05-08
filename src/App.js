@@ -6,6 +6,7 @@ import SignIn from './SignIn.js';
 import MainNav from './MainNav.js';
 import AccountNav from './AccountNav.js';
 import Search from './Search.js';
+import CreateListing from './CreateListing.js';
 import { listings } from './FakeData.js';
 import { itemIDS } from './FakeData.js';
 //import './App.css';
@@ -36,6 +37,7 @@ class App extends Component {
           <Route exact={true} path='/' render={renderAllItems} />
           <Route exact={true} path='/signup' component={SignUp}/>
           <Route exact={true} path='/signin' component={SignIn}/>
+          <Route exact={true} path='/createlisting' component={CreateListing}/>
         </div>
         </BrowserRouter>
       </div>

@@ -55,6 +55,8 @@ class SignUp extends Component {
       }
     )
     fetch('/signup', { method: 'POST', body: bod })
+    .then(response => response.text())
+    .then((response) => console.log(response))
   }
   
 
