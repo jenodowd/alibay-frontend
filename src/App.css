@@ -1,28 +1,96 @@
-.App {
-  text-align: center;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+/* LINKS */
+
+.link {
+  text-decoration: none;
+  color: black;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+/* ITEMS */
+
+.allItems {
+  margin-left: 50px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.items {
+  display: inline;
+  flex-wrap: wrap;
 }
 
-.App-intro {
-  font-size: large;
+.card {
+  display: inline-block;
+  margin: 10px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* ACCOUNT NAV */
+
+.accountNavUL {
+  list-style-type: none;
+  text-align: right;
+  margin: 10px;
+  padding: 0;
+  font-size: 14px;
+}
+
+.accountNav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #f4f3f3;
+}
+
+.accountNavLI {
+  display: inline;
+}
+
+/* MAIN NAV */
+
+.mainNav {
+  margin-top: 60px;
+  min-width: 800px;
+}
+
+.mainNavUL {
+  list-style-type: none;
+  margin: 20px;
+  padding: 0;
+  font-size: 17px;
+}
+
+.mainNavLI {
+  display: inline;
+  vertical-align: middle;
+}
+
+.logo {
+  font-size: 40px;
+  display: inline;
+  vertical-align: middle;
+  margin-right: 95px;
+}
+
+
+/* FORM */
+
+.inputField{
+  font-size: 15px
+}
+
+/* SEARCH */
+
+.searchContainer {
+  display: flex;
+  margin: 20px;
+}
+
+.search {
+  margin-top: 10px;
 }

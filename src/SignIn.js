@@ -44,7 +44,7 @@ class SignIn extends Component {
 
         <form onSubmit={this.handleLoginSubmit}>
 
-          <input placeholder="Email"
+          <input className="inputField" placeholder="Email"
             type="text"
             value={this.emailInput}
             onChange={this.handleEmailChange}>
@@ -52,7 +52,7 @@ class SignIn extends Component {
 
           <br /><br />
 
-          <input placeholder="Password" 
+          <input className="inputField" placeholder="Password" 
             type="password"
             value={this.passwordInput}
             onChange={this.handlePasswordChange}>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
-import './App.css';
+//import './App.css';
 
 class SignUp extends Component {
   constructor() {
@@ -64,7 +64,7 @@ class SignUp extends Component {
 
         <form onSubmit={this.handleSignUpSubmit}>
 
-          <input placeholder="First Name"
+          <input className="inputField" placeholder="First Name"
             type="text"
             value={this.state.firstNameInput}
             onChange={this.handleFirstNameChange}>
@@ -72,7 +72,7 @@ class SignUp extends Component {
 
           <br /><br />
 
-          <input placeholder="Last Name"
+          <input className="inputField" placeholder="Last Name"
             type="text"
             value={this.state.lastNameInput}
             onChange={this.handleLastNameChange}>
@@ -80,7 +80,7 @@ class SignUp extends Component {
 
           <br /><br />
 
-          <input placeholder="Email"
+          <input className="inputField" placeholder="Email"
             type="text"
             value={this.state.emailInput}
             onChange={this.handleEmailChange}>
@@ -88,7 +88,7 @@ class SignUp extends Component {
 
           <br /><br />
 
-          <input placeholder="Password"
+          <input className="inputField" placeholder="Password"
             type="password"
             value={this.state.passwordInput}
             onChange={this.handlePasswordChange}>
@@ -96,7 +96,7 @@ class SignUp extends Component {
 
           <br /><br />
 
-          <input placeholder="Confirm Password"
+          <input className="inputField" placeholder="Confirm Password"
             type="password"
             value={this.state.confirmPasswordInput}
             onChange={this.handleConfirmPasswordChange}>

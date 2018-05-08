@@ -3,34 +3,40 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import Item from './Item.js';
 import SignUp from './SignUp.js';
 import SignIn from './SignIn.js';
+import MainNav from './MainNav.js';
+import AccountNav from './AccountNav.js';
+import Search from './Search.js';
 import { listings } from './FakeData.js';
 import { itemIDS } from './FakeData.js';
-import './App.css';
+//import './App.css';
 
+
+let allItems = itemIDS.map(itemID => <div className="items"><Item 
+image={listings[itemID].image}
+name={listings[itemID].itemName}
+description={listings[itemID].description} 
+price ={listings[itemID].price}  /></div>)
 
 let renderAllItems = () => {
-  return itemIDS.map(itemID => <Item 
-      name={listings[itemID].itemName}
-      description={listings[itemID].description} 
-      price ={listings[itemID].price}  />)
+  return (<div className = "searchContainer"><Search /><div className="allItems">{allItems}</div></div>)
 }
 
-// let renderSignUp = () => {
-//   return <SignUp />
+// let renderSignIn = () => {
+//   return <SignIn />
 // }
 
 class App extends Component {
   render() {
     return (<div>
         <div>
-        <h1> test </h1>
         <BrowserRouter>
         <div>
+          <AccountNav />
+          <MainNav />
           <Route exact={true} path='/' render={renderAllItems} />
           <Route exact={true} path='/signup' component={SignUp}/>
           <Route exact={true} path='/signin' component={SignIn}/>
         </div>
-
         </BrowserRouter>
       </div>
       </div>
