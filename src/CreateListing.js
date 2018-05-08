@@ -32,13 +32,18 @@ class CreateListing extends Component {
     this.setState({ descriptionInput: event.target.value })
   }
 
-  handleImageChange = (event) => {
-    this.setState({ image: event.target.value })
-  }
-
 
   uploadFile = (x) => {
-    fetch('/upics',{method: "POST", body: x})
+    console.log(x);
+    let filename = x.name;
+    let fileExtension = filename.split('.').pop();
+    fetch('/uploadPic?ext=' + fileExtension,{
+      method: "POST",
+      body: x
+    })
+    .then(response => response.text())
+    .then(response => this.setState({imageInput: response}))
+    .then(() => console.log(this.state.imageInput))
   }
 
   handleCreateListingSubmit = (event) => {
@@ -48,7 +53,8 @@ class CreateListing extends Component {
         userId: this.state.userIDInput,
         name: this.state.nameInput,
         price: this.state.priceInput,
-        description: this.state.descriptionInput
+        description: this.state.descriptionInput,
+        image: this.state.imageInput
       }
     )
 
