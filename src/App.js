@@ -27,16 +27,32 @@ let renderAllItems = () => {
 // }
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: undefined,
+      userID: undefined
+    }
+  }
+
+  setName = (name) => {
+    this.setState({ name })
+  }
+
+  renderSignIn = () => {
+   return <SignIn setName={this.setName} />
+  }
+
   render() {
     return (<div>
         <div>
         <BrowserRouter>
         <div>
-          <AccountNav />
+          <AccountNav name={this.state.name} />
           <MainNav />
           <Route exact={true} path='/' render={renderAllItems} />
           <Route exact={true} path='/signup' component={SignUp}/>
-          <Route exact={true} path='/signin' component={SignIn}/>
+          <Route exact={true} path='/signin' render={this.renderSignIn}/>
           <Route exact={true} path='/createlisting' component={CreateListing}/>
         </div>
         </BrowserRouter>

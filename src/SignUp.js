@@ -11,13 +11,7 @@ class SignUp extends Component {
       lastNameInput: undefined,
       emailInput: undefined,
       passwordInput: undefined,
-      confirmPasswordInput: undefined,
-
-      firstName: undefined,
-      lastName: undefined,
-      email: undefined,
-      password: undefined,
-      confirmPassword: undefined
+      confirmPasswordInput: undefined
     }
 
   }

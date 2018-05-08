@@ -9,9 +9,7 @@ class SignIn extends Component {
     this.state = {
       emailInput: undefined,
       passwordInput: undefined,
-
-      email: undefined,
-      password: undefined
+      loggedIn: false
     }
 
   }
@@ -37,12 +35,21 @@ class SignIn extends Component {
     fetch('/login', { method: 'POST', body: bod })
     .then(response => response.text())
     .then(responseBody => JSON.parse(responseBody))
+    .then(responseBody => {
+      if(responseBody.success) {
+        console.log("login successful")
+        this.setState({ loggedIn: true})
+        this.props.setName("Jen")
+      } else console.log("login failed")
+    })
   }
 
   render() {
-    return (
+    if(this.state.loggedIn === true) {
+      return (<div><h1>You're logged in!</h1></div>)
+    }
+    else return (
       <div>
-
         <form onSubmit={this.handleLoginSubmit}>
 
           <input className="inputField" placeholder="Email"
