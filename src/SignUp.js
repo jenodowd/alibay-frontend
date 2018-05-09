@@ -7,11 +7,13 @@ class SignUp extends Component {
     super();
 
     this.state = {
-      firstNameInput: undefined,
-      lastNameInput: undefined,
-      emailInput: undefined,
-      passwordInput: undefined,
-      confirmPasswordInput: undefined
+      firstNameInput: "",
+      lastNameInput: "",
+      emailInput: "",
+      passwordInput: "",
+      confirmPasswordInput: "",
+      signUpComplete: false,
+      error: false,
     }
 
   }
@@ -50,12 +52,38 @@ class SignUp extends Component {
     )
     fetch('/signup', { method: 'POST', body: bod })
     .then(response => response.text())
-    .then((response) => console.log(response))
+    //.then((response) => console.log(response))
+    .then(responseBody => {console.log(responseBody);return JSON.parse(responseBody)})
+    //.then(response => console.log(response.success))
+    .then(responseBody => {
+      if(responseBody.success === true) {
+        this.setState({signUpComplete: true})
+      } else {this.setState({error: true})}
+    })
+
   }
   
 
   render() {
-    return (
+    if (this.state.signUpComplete === true) {
+      return (<div className = "signUp">
+      <div className="signUpThankYou">
+      <div> thanks for signing up </div>
+      <button onClick={this.props.F_CloseModal}>close</button>
+      </div>
+      </div>)
+    }
+
+    if (this.state.error === true) {
+      return (<div className = "signUp">
+      <div className="signUpThankYou">
+      <div> something went wrong </div>
+      <button onClick={this.props.F_CloseModal}>close</button>
+      </div>
+      </div>)
+    }
+
+    else return (
       <div className = "signUp">
 
         <form className ="signUpForm" onSubmit={this.handleSignUpSubmit}>
