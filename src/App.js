@@ -30,7 +30,7 @@ class App extends Component {
       userID: undefined
     }
   }
-  componentDidMount() {
+  componentDidMount = () => {
     fetch('/allListings', {
       method: 'GET'
     }).then(res => res.text())
