@@ -3,11 +3,17 @@ html, body {
   padding: 0;
 }
 
-/* LINKS */
+/* ALL LINKS */
 
 .link {
   text-decoration: none;
   color: black;
+}
+
+/* ALL FORMS */
+
+.inputField{
+  font-size: 15px
 }
 
 /* ITEMS */
@@ -103,16 +109,46 @@ html, body {
   font-size: 11pt;
 }
 
-
-/* FORM */
-
-.inputField{
-  font-size: 15px
-}
-
 /* SIDENAV */
 
 .sideNavContainer {
   display: flex;
   margin: 20px;
 }
+
+/* SIGN UP */
+
+.signUp {
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  background-color: white;
+  height: 500px;
+  width: 500px;
+  box-shadow: 2px 5px 8px #888888;
+}
+
+.signUpForm {
+  margin: 20px;
+  text-align: center;
+}
+
+.signUpThankYou {
+  margin: 20px;
+  text-align: center;
+  margin-top: 100px;
+}
+/* DETAILS */
+.details {
+  display: flex;
+  margin-left: 500px;
+  margin-top: 100px;
+
+}
+/* .detailImg {
+  display: flex;
+}
+
+.detailTxt {
+  display: flex;
+} */
