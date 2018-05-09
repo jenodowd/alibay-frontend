@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './App.css';
 
 class Item extends Component {
@@ -7,9 +7,10 @@ class Item extends Component {
     return (
       <div className="card">
       <div>
-          <img src={this.props.image} alt="null" />
+        <Link to={"/details/" + this.props.itemID}> 
+          <img src={this.props.image} alt="null" linkto/>
+        </Link>
           <div>{this.props.name}</div>
-          <div>{this.props.description}</div>
           <div>${this.props.price}</div>
       </div>
       </div>
