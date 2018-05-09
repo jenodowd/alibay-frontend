@@ -60,6 +60,8 @@ class SignUp extends Component {
 
         <form onSubmit={this.handleSignUpSubmit}>
 
+        <button onClick={this.props.F_CloseModal}>close</button>
+
           <input className="inputField" placeholder="First Name"
             type="text"
             value={this.state.firstNameInput}
