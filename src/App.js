@@ -109,6 +109,7 @@ class App extends Component {
           <Route exact={true} path='/itemsbought' render={this.renderItemsBought}/>
           <Route exact={true} path='/itemssold' render={this.renderItemsSold} />
           <Route exact={true} path='/details/:id' render={this.renderDetails} />
+          <Route exact={true} path='/cart/:userid' render={this.renderCart} />
         </div>
         </BrowserRouter>
       </div>
