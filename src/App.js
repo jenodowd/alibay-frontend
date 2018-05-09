@@ -1,26 +1,38 @@
-import React, { Component } from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
-import Item from './Item.js';
-import SignUp from './SignUp.js';
-import SignIn from './SignIn.js';
-import MainNav from './MainNav.js';
-import AccountNav from './AccountNav.js';
-import SideNav from './SideNav.js';
-import CreateListing from './CreateListing.js';
-import { listings } from './FakeData.js';
-import { itemIDS } from './FakeData.js';
-import './App.css';
-import ViewAccount from './ViewAccount.js';
+import React, { Component } from "react";
+import { Route, BrowserRouter } from "react-router-dom";
+import Item from "./Item.js";
+import SignUp from "./SignUp.js";
+import SignIn from "./SignIn.js";
+import MainNav from "./MainNav.js";
+import AccountNav from "./AccountNav.js";
+import SideNav from "./SideNav.js";
+import CreateListing from "./CreateListing.js";
+import { listings } from "./FakeData.js";
+import { itemIDS } from "./FakeData.js";
+import "./App.css";
+import ViewAccount from "./ViewAccount.js";
+import ItemsBought from "./ItemsBought";
+import ItemsSold from "./ItemsSold";
 
-let allItems = itemIDS.map(itemID => <div className="items"><Item 
-image={listings[itemID].image}
-name={listings[itemID].itemName}
-description={listings[itemID].description} 
-price ={listings[itemID].price}  /></div>)
+let allItems = itemIDS.map(itemID => (
+  <div className="items">
+    <Item
+      image={listings[itemID].image}
+      name={listings[itemID].itemName}
+      description={listings[itemID].description}
+      price={listings[itemID].price}
+    />
+  </div>
+));
 
 let renderAllItems = () => {
-  return (<div className="sideNavContainer"><SideNav /><div className="allItems">{allItems}</div></div>)
-}
+  return (
+    <div className="sideNavContainer">
+      <SideNav />
+      <div className="allItems">{allItems}</div>
+    </div>
+  );
+};
 
 class App extends Component {
   constructor() {
@@ -28,58 +40,86 @@ class App extends Component {
     this.state = {
       name: undefined,
       userID: undefined
-    }
+    };
   }
   componentDidMount() {
-    fetch('/allListings', {
-      method: 'GET'
-    }).then(res => res.text())
+    fetch("/allListings", {
+      method: "GET"
+    })
+      .then(res => res.text())
       .then(resB => {
-        let parsed = JSON.parse(resB)
+        let parsed = JSON.parse(resB);
         let listings = parsed.listings;
-        console.log(listings)
-        this.setState({listings: listings})
-      })
+        console.log(listings);
+        this.setState({ listings: listings });
+      });
   }
-  setName = (name) => {
-    this.setState({ name })
-  }
+  setName = name => {
+    this.setState({ name });
+  };
 
-  setUserID = (userID) => {
-    this.setState({ userID })
-  }
+  setUserID = userID => {
+    this.setState({ userID });
+  };
 
   renderSignIn = () => {
-   return <SignIn setName={this.setName} setUserID={this.setUserID}/>
-  }
-  
-  renderViewAccount = () =>{
-    return <ViewAccount name={this.state.name} userID={this.state.userID}/>
-  }
+    return <SignIn setName={this.setName} setUserID={this.setUserID} />;
+  };
+
+  renderViewAccount = () => {
+    return <ViewAccount name={this.state.name} userID={this.state.userID} />;
+  };
 
   renderCreateListing = () => {
-    return <CreateListing userID={this.state.userID} />
-   }
+    return <CreateListing userID={this.state.userID} />;
+  };
 
   renderListings = () => {
-    return this.state.listings.map(listing =>{})
-  }
+    return this.state.listings.map(listing => {});
+  };
+
+  renderItemsBought = () => {
+    return <ItemsBought userID={this.state.userID} />;
+  };
+
+  renderItemsSold = () => {
+    return <ItemsSold userID={this.state.userID} />;
+  };
 
   render() {
-    return (<div>
+    return (
+      <div>
         <div>
-        <BrowserRouter>
-        <div>
-          <AccountNav name={this.state.name} />
-          <MainNav />
-          <Route exact={true} path='/' render={renderAllItems} />
-          <Route exact={true} path='/signup' component={SignUp}/>
-          <Route exact={true} path='/signin' render={this.renderSignIn}/>
-          <Route exact={true} path='/viewAccount' render={this.renderViewAccount}/>
-          <Route exact={true} path='/createlisting' render={this.renderCreateListing}/>
+          <BrowserRouter>
+            <div>
+              <AccountNav name={this.state.name} />
+              <MainNav />
+              <Route exact={true} path="/" render={renderAllItems} />
+              <Route exact={true} path="/signup" component={SignUp} />
+              <Route exact={true} path="/signin" render={this.renderSignIn} />
+              <Route
+                exact={true}
+                path="/viewaccount"
+                render={this.renderViewAccount}
+              />
+              <Route
+                exact={true}
+                path="/createlisting"
+                render={this.renderCreateListing}
+              />
+              <Route
+                exact={true}
+                path="/itemsbought"
+                render={this.renderItemsBought}
+              />
+              <Route
+                exact={true}
+                path="/itemssold"
+                render={this.renderItemsSold}
+              />
+            </div>
+          </BrowserRouter>
         </div>
-        </BrowserRouter>
-      </div>
       </div>
     );
   }
