@@ -30,12 +30,14 @@ class Details extends Component {
   render() {
     //console.log(this.state.image)
     return (
-      <div>
-          <div><img src={"/"+this.state.image} alt="null" /></div>
-          <div>{this.state.name}</div>
+      <div className="details">
+          <img className="detailImg" src={"/"+this.state.image} alt="null" />
+          <div className="detailTxt">
+          <div>{this.state.itemName}</div>
           <div>{this.state.description}</div>
           <div>${this.state.price}</div>
           <button onClick={this.addToCart}>Add to cart</button>
+          </div>
       </div>
           )
         }

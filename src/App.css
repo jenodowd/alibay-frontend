@@ -134,17 +134,16 @@ html, body {
 }
 
 /* DETAILS */
+.details {
+  display: flex;
+  margin-left: 500px;
+  margin-top: 100px;
 
-.detailsImg {
-  position: absolute;
-  height: 500px;
-  width: 700px;
+}
+/* .detailImg {
   display: flex;
 }
 
-.detailsTxt {
+.detailTxt {
   display: flex;
-  height: 500px;
-  width: 700px;
-  text-align: center
-}
+} */
