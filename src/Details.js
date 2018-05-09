@@ -26,6 +26,12 @@ class Details extends Component {
       this.setState({image: image, description: description, price: price, itemName: itemName})
     })
   }
+
+  addToCart = () => {
+    fetch(
+      
+    )
+  }
   
   render() {
     //console.log(this.state.image)
