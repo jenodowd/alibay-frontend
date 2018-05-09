@@ -69,7 +69,7 @@ class SignUp extends Component {
       return (<div className = "signUp">
       <div className="signUpThankYou">
       <div> thanks for signing up </div>
-      <button onClick={this.props.F_CloseModal}>close</button>
+      <button onClick={this.props.closeSignUp}>close</button>
       </div>
       </div>)
     }
@@ -78,7 +78,7 @@ class SignUp extends Component {
       return (<div className = "signUp">
       <div className="signUpThankYou">
       <div> something went wrong </div>
-      <button onClick={this.props.F_CloseModal}>close</button>
+      <button onClick={this.props.closeSignUp}>close</button>
       </div>
       </div>)
     }
@@ -88,7 +88,7 @@ class SignUp extends Component {
 
         <form className ="signUpForm" onSubmit={this.handleSignUpSubmit}>
 
-        <button onClick={this.props.F_CloseModal}>close</button>
+        <button onClick={this.props.closeSignUp}>close</button>
 
         <h1>Sign Up</h1>
 
