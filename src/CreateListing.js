@@ -55,12 +55,12 @@ class CreateListing extends Component {
     event.preventDefault();
     let bod = JSON.stringify(
       {
-        userId: this.state.userIDInput,
+        userId: this.props.userID,
         name: this.state.nameInput,
         price: this.state.priceInput,
         description: this.state.descriptionInput,
         tags: this.state.tags,
-        image: this.state.imageInput
+        image: this.state.imageInput,
       }
     )
 
@@ -75,14 +75,6 @@ class CreateListing extends Component {
       <div>
 
         <form onSubmit={this.handleCreateListingSubmit}>
-
-          <input className="inputField" placeholder="userID"
-            type="text"
-            value={this.userIDInput}
-            onChange={this.handleUserIDChange}>
-          </input>
-
-          <br /><br />
 
           <input className="inputField" placeholder="Name"
             type="text"

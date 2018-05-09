@@ -11,7 +11,7 @@ class AccountNav extends Component {
     return (
       <div className="accountNav">
         <ul className="accountNavUL">
-          {this.props.name && <li className="accountNavLI">Welcome {this.props.name}</li>}
+          {this.props.name && <li className="accountNavLI">Welcome {this.props.name} &nbsp; </li>}
           {!this.props.name && <li className="accountNavLI"><Link className="link" to={'/signin'}>Login</Link> &nbsp; </li>}
           {!this.props.name && <li className="accountNavLI"><Link className="link" to={'/signup'}>Sign Up</Link> &nbsp; </li>}
           <li className="accountNavLI"><button><Link className="link" to={'/createlisting'}>Post Item</Link></button> &nbsp; </li>

@@ -35,19 +35,21 @@ class SignIn extends Component {
     fetch('/login', { method: 'POST', body: bod })
     .then(response => response.text())
     .then(responseBody => JSON.parse(responseBody))
-    .then(responseBody => console.log(responseBody))
-    // .then(responseBody => {
-    //   if(responseBody.success) {
-    //     console.log("login successful")
-    //     this.setState({ loggedIn: true})
-    //     this.props.setName("Jen")
-    //   } else console.log("login failed")
-    // })
+    //.then(responseBody => console.log(responseBody))
+    //.then(responseBody => console.log(responseBody.firstName))
+    .then(responseBody => {
+      if(responseBody.success) {
+        //console.log("login successful")
+        this.setState({ loggedIn: true})
+        this.props.setName(responseBody.firstName)
+        this.props.setUserID(responseBody.userID)
+      } else console.log("login failed")
+    })
   }
 
   render() {
     if(this.state.loggedIn === true) {
-      return (<div><h1>You're logged in!</h1></div>)
+      return (<div>You're logged in!</div>)
     }
     else return (
       <div>

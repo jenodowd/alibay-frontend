@@ -9,7 +9,7 @@ import Search from './Search.js';
 import CreateListing from './CreateListing.js';
 import { listings } from './FakeData.js';
 import { itemIDS } from './FakeData.js';
-//import './App.css';
+import './App.css';
 
 
 let allItems = itemIDS.map(itemID => <div className="items"><Item 
@@ -21,10 +21,6 @@ price ={listings[itemID].price}  /></div>)
 let renderAllItems = () => {
   return (<div className = "searchContainer"><Search /><div className="allItems">{allItems}</div></div>)
 }
-
-// let renderSignIn = () => {
-//   return <SignIn />
-// }
 
 class App extends Component {
   constructor() {
@@ -39,9 +35,17 @@ class App extends Component {
     this.setState({ name })
   }
 
-  renderSignIn = () => {
-   return <SignIn setName={this.setName} />
+  setUserID = (userID) => {
+    this.setState({ userID })
   }
+
+  renderSignIn = () => {
+   return <SignIn setName={this.setName} setUserID={this.setUserID}/>
+  }
+
+  renderCreateListing = () => {
+    return <CreateListing userID={this.state.userID} />
+   }
 
   render() {
     return (<div>
@@ -53,7 +57,7 @@ class App extends Component {
           <Route exact={true} path='/' render={renderAllItems} />
           <Route exact={true} path='/signup' component={SignUp}/>
           <Route exact={true} path='/signin' render={this.renderSignIn}/>
-          <Route exact={true} path='/createlisting' component={CreateListing}/>
+          <Route exact={true} path='/createlisting' render={this.renderCreateListing}/>
         </div>
         </BrowserRouter>
       </div>
