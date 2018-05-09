@@ -10,6 +10,7 @@ import CreateListing from './CreateListing.js';
 import { listings } from './FakeData.js';
 import { itemIDS } from './FakeData.js';
 import './App.css';
+import ViewAccount from './ViewAccount.js';
 
 
 let allItems = itemIDS.map(itemID => <div className="items"><Item 
@@ -43,6 +44,10 @@ class App extends Component {
    return <SignIn setName={this.setName} setUserID={this.setUserID}/>
   }
 
+  renderViewAccount = () =>{
+    return <ViewAccount name={this.state.name}/>
+  }
+
   renderCreateListing = () => {
     return <CreateListing userID={this.state.userID} />
    }
@@ -57,6 +62,7 @@ class App extends Component {
           <Route exact={true} path='/' render={renderAllItems} />
           <Route exact={true} path='/signup' component={SignUp}/>
           <Route exact={true} path='/signin' render={this.renderSignIn}/>
+          <Route exact={true} path='/viewAccount' render={this.renderViewAccount}/>
           <Route exact={true} path='/createlisting' render={this.renderCreateListing}/>
         </div>
         </BrowserRouter>
