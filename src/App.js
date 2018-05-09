@@ -7,30 +7,24 @@ import MainNav from './MainNav.js';
 import AccountNav from './AccountNav.js';
 import SideNav from './SideNav.js';
 import CreateListing from './CreateListing.js';
-import { listings } from './FakeData.js';
-import { itemIDS } from './FakeData.js';
+//import { listings } from './FakeData.js';
+//import { itemIDS } from './FakeData.js';
 import './App.css';
 import ViewAccount from './ViewAccount.js';
 import ItemsBought from './ItemsBought';
 import ItemsSold from './ItemsSold'
 
-
-let allItems = itemIDS.map(itemID => <div className="items"><Item 
-image={listings[itemID].image}
-name={listings[itemID].itemName}
-description={listings[itemID].description} 
-price ={listings[itemID].price}  /></div>)
-
-let renderAllItems = () => {
-  return (<div className="sideNavContainer"><SideNav /><div className="allItems">{allItems}</div></div>)
-}
+// let renderAllItems = () => {
+//   return (<div className="sideNavContainer"><SideNav /><div className="allItems">{allItems}</div></div>)
+// }
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       name: undefined,
-      userID: undefined
+      userID: undefined,
+      listings : {}
     }
   }
   componentDidMount() {
@@ -40,8 +34,8 @@ class App extends Component {
       .then(resB => {
         let parsed = JSON.parse(resB)
         let listings = parsed.listings;
-        console.log(listings)
         this.setState({listings: listings})
+        //console.log(this.state.listings)
       })
   }
   setName = (name) => {
@@ -65,7 +59,18 @@ class App extends Component {
    }
 
   renderListings = () => {
-    return this.state.listings.map(listing =>{})
+    //return (<div>HEY</div>)
+     console.log(this.state.listings)
+    return Object.keys(this.state.listings).map(itemID =>{
+      return (<div className="items">
+        <Item image={this.state.listings[itemID].image} name={this.state.listings[itemID].itemName} 
+        description={this.state.listings[itemID].description} price ={this.state.listings[itemID].price} />}
+      </div>)})
+  
+  }
+
+  renderAllItems = () => {
+    return (<div className="sideNavContainer"><SideNav /><div className="allItems">asdasd{this.renderListings()}</div></div>)
   }
 
   renderItemsBought = () =>{
@@ -83,7 +88,7 @@ class App extends Component {
         <div>
           <AccountNav name={this.state.name} />
           <MainNav />
-          <Route exact={true} path='/' render={renderAllItems} />
+          <Route exact={true} path='/' render={this.renderAllItems} />
           <Route exact={true} path='/signup' component={SignUp}/>
           <Route exact={true} path='/signin' render={this.renderSignIn}/>
           <Route exact={true} path='/viewaccount' render={this.renderViewAccount}/>
