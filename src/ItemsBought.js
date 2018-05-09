@@ -47,7 +47,6 @@ class ItemsBought extends Component {
     });
   };
 
-
   render() {
 
     return (

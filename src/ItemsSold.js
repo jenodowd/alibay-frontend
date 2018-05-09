@@ -1,33 +1,62 @@
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./App.css";
+import Item from "./Item.js";
 
-    import React, { Component } from 'react';
-    import { Link } from 'react-router-dom';
-    import './App.css';
-    
-    
-    class ItemsSold extends Component {
-        constructor() {
-          super();
-    
-        }
-    renderItemsSold = () =>{
-        fetch('/getItemsSold?userID='+this.props.userID, { method: 'GET'})
-        .then(response =>response.text())
-        .then(responseBody => this.setState({itemsSold: responseBody.itemdIDs}))
-        
-        fetch('getItemDetails?itemID='+this.state.itemsSold, {method: 'GET'})
-        .then(response=>response.text())
-        .then(responseBody=>console.log(responseBody))
-      }
+class ItemsSold extends Component {
+  constructor() {
+    super();
 
+    this.state = {itemsSold:[]};
+  }
+  componentDidMount() {
+    fetch("/getItemsSold?userID=" + this.props.userID, {
+      method: "GET"
+    })
+      .then(response => response.text())
+      .then(responseBody => {
+        let parsed = JSON.parse(responseBody);
+        let itemsSold = parsed.itemIDs;
+        this.setSoldItems(itemsSold);
+      });
+  }
 
-      render() {
-        return (
-          <div>
-          {this.props.name && <div className="viewAccount">My Account</div>}
-          {this.renderItemsSold}
-          </div>
-              )
-            }
-          }
+  setSoldItems = async itemsSold => {
+    let responses = await Promise.all(
+      itemsSold.map(itemID => 
+        fetch("getItemDetails?itemID=" + itemID, { method: "GET" }).then(res => res.json())
+      )
+    );
+    let itemObjects = responses.map((res, i) => ({ ...res.details, itemID: itemsSold[i] }));
+    this.setState({ itemsSold: itemObjects });
+  };
 
-      export default ItemsSold;
+  displayItemsSold = () => {
+ //   console.log(this.state.itemsBought)
+    return this.state.itemsSold.map(item => {
+      return (
+        <div className="items">
+          <Item itemID={item.itemID}
+            image={item.image}
+            name={item.itemName}
+            description={item.description}
+            price={item.price}
+          />
+        </div>
+      );
+    });
+  };
+
+  render() {
+
+    return (
+      <div>
+        {this.props.name && <div className="viewAccount">My Account</div>}
+        <div>Items Sold</div>
+        <div>{this.displayItemsSold()}</div>
+      </div>
+    );
+  }
+}
+
+export default ItemsSold;
