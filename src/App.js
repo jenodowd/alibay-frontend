@@ -24,7 +24,7 @@ class App extends Component {
       name: undefined,
       userID: undefined,
       listings : {},
-      loginP : false,
+      showSignUp : false,
     }
   }
   componentDidMount() {
@@ -84,22 +84,22 @@ class App extends Component {
     return (<Details itemID={routerData.match.params.id} />)
   }
 
-  F_GoLogin = () => {
-    this.setState({loginP:true})
+  renderSignUp = () => {
+    this.setState({showSignUp: true})
   }
 
-  F_CloseModal = () => {
-    this.setState({loginP:false})
+  closeSignUp = () => {
+    this.setState({showSignUp: false})
   }
 
   render() {
-    var signup = (()=>{if(this.state.loginP===true){return(<SignUp F_CloseModal={this.F_CloseModal}/>)}else{return null}})()
+    var signup = (()=>{if(this.state.showSignUp===true){return(<SignUp closeSignUp={this.closeSignUp}/>)}else{return null}})()
     return (<div>
         <div> 
         <BrowserRouter>
         <div>
           {signup}
-          <AccountNav F_GoLogin={this.F_GoLogin} name={this.state.name} />
+          <AccountNav renderSignUp={this.renderSignUp} name={this.state.name} />
           <MainNav />
           <Route exact={true} path='/' render={this.renderAllItems} />
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
