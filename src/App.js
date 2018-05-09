@@ -12,6 +12,7 @@ import './App.css';
 import ViewAccount from './ViewAccount.js';
 import ItemsBought from './ItemsBought';
 import ItemsSold from './ItemsSold'
+import Cart from './Cart.js'
 
 // let renderAllItems = () => {
 //   return (<div className="sideNavContainer"><SideNav /><div className="allItems">{allItems}</div></div>)
@@ -92,6 +93,10 @@ class App extends Component {
     this.setState({showSignUp: false})
   }
 
+  renderCart = (routerData) => {
+    return (<Cart userID={routerData.match.params.userID}/>)
+  }
+
   render() {
     var signup = (()=>{if(this.state.showSignUp===true){return(<SignUp closeSignUp={this.closeSignUp}/>)}else{return null}})()
     return (<div>
@@ -109,7 +114,7 @@ class App extends Component {
           <Route exact={true} path='/itemsbought' render={this.renderItemsBought}/>
           <Route exact={true} path='/itemssold' render={this.renderItemsSold} />
           <Route exact={true} path='/details/:id' render={this.renderDetails} />
-          <Route exact={true} path='/cart/:userid' render={this.renderCart} />
+          <Route exact={true} path='/cart/:userID' render={this.renderCart} />
         </div>
         </BrowserRouter>
       </div>
