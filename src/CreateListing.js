@@ -88,6 +88,7 @@ class CreateListing extends Component {
             type="text"
             value={this.state.nameInput}
             onChange={this.handleNameChange}
+            required
           />
 
           <br />
@@ -99,6 +100,7 @@ class CreateListing extends Component {
             type="text"
             value={this.state.priceInput}
             onChange={this.handlePriceChange}
+            required
           />
 
           <br />
@@ -110,6 +112,7 @@ class CreateListing extends Component {
             type="text"
             value={this.state.descriptionInput}
             onChange={this.handleDecriptionChange}
+            required
           />
 
           <br />
@@ -120,6 +123,7 @@ class CreateListing extends Component {
             placeholder="Tags eg: vintage, sweater, wool"
             value={this.state.tagsInput}
             onChange={this.handleTagsChange}
+            required
           />
 
           <br />
@@ -129,6 +133,7 @@ class CreateListing extends Component {
             type="file"
             id="input"
             onChange={e => this.uploadFile(e.target.files[0])}
+            required
           />
 
           <br />

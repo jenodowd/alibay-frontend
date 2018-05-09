@@ -35,7 +35,6 @@ class App extends Component {
         let parsed = JSON.parse(resB)
         let listings = parsed.listings;
         this.setState({listings: listings})
-        //console.log(this.state.listings)
       })
   }
   setName = (name) => {
@@ -70,7 +69,7 @@ class App extends Component {
   }
 
   renderAllItems = () => {
-    return (<div className="sideNavContainer"><SideNav /><div className="allItems">asdasd{this.renderListings()}</div></div>)
+    return (<div className="sideNavContainer"><SideNav /><div className="allItems">{this.renderListings()}</div></div>)
   }
 
   renderItemsBought = () =>{
