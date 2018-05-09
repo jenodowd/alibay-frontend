@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 //import { Link } from 'react-router-dom';
-import './App.css';
+import "./App.css";
 
 class CreateListing extends Component {
   constructor() {
@@ -13,110 +13,131 @@ class CreateListing extends Component {
       descriptionInput: undefined,
       imageInput: undefined,
       tagsInput: undefined,
-    }
-
+      submitted: false
+    };
   }
 
-  handleUserIDChange = (event) => {
-    this.setState({ userIDInput: event.target.value })
-  }
+  handleUserIDChange = event => {
+    this.setState({ userIDInput: event.target.value });
+  };
 
-  handleNameChange = (event) => {
-    this.setState({ nameInput: event.target.value })
-  }
+  handleNameChange = event => {
+    this.setState({ nameInput: event.target.value });
+  };
 
-  handlePriceChange= (event) => {
-    this.setState({ priceInput: event.target.value })
-  }
+  handlePriceChange = event => {
+    this.setState({ priceInput: event.target.value });
+  };
 
-  handleDecriptionChange = (event) => {
-    this.setState({ descriptionInput: event.target.value })
-  }
+  handleDecriptionChange = event => {
+    this.setState({ descriptionInput: event.target.value });
+  };
 
-  handleTagsChange = (event) => {
-    this.setState({ tagsInput: event.target.value })
-  }
+  handleTagsChange = event => {
+    this.setState({ tagsInput: event.target.value });
+  };
 
-
-  uploadFile = (x) => {
-    console.log(x);
+  uploadFile = x => {
     let filename = x.name;
-    let fileExtension = filename.split('.').pop();
-    fetch('/uploadPic?ext=' + fileExtension,{
+    let fileExtension = filename.split(".").pop();
+    fetch("/uploadPic?ext=" + fileExtension, {
       method: "POST",
       body: x
     })
-    .then(response => response.text())
-    .then(response => this.setState({imageInput: response}))
-    .then(() => console.log(this.state.imageInput))
-  }
+      .then(response => response.text())
+      .then(response => this.setState({ imageInput: response }))
+      .then(() => console.log(this.state.imageInput));
+  };
 
-  handleCreateListingSubmit = (event) => {
+  handleCreateListingSubmit = event => {
     event.preventDefault();
-    let bod = JSON.stringify(
-      {
-        userId: this.props.userID,
-        name: this.state.nameInput,
-        price: this.state.priceInput,
-        description: this.state.descriptionInput,
-        tags: this.state.tags,
-        image: this.state.imageInput,
-      }
-    )
+    let bod = JSON.stringify({
+      userID: this.props.userID,
+      price: this.state.priceInput,
+      description: this.state.descriptionInput,
+      itemName: this.state.nameInput,
+      image: this.state.imageInput,
+      tags: this.state.tagsInput
+    });
 
-    fetch('/createListing', { method: 'POST', body: bod })
-    .then(response => response.text())
-    .then(responseBody => console.log(responseBody))
+    fetch("/createListing", { method: "POST", body: bod })
+      .then(response => response.text())
+      .then(responseBody => {
+        console.log(responseBody);
+        this.setState({
+          submitted: true,
+          userIDInput: "",
+          nameInput: "",
+          priceInput: "",
+          descriptionInput: "",
+          imageInput: "",
+          tagsInput: ""
+        });
 
-  }
+      });
+  };
 
   render() {
     return (
       <div>
-
+        {this.state.submitted ? <h5>Thank you for the submission!</h5> : null}
         <form onSubmit={this.handleCreateListingSubmit}>
-
-          <input className="inputField" placeholder="Name"
+          <input
+            className="inputField"
+            placeholder="Name"
             type="text"
-            value={this.nameInput}
-            onChange={this.handleNameChange}>
-          </input>
+            value={this.state.nameInput}
+            onChange={this.handleNameChange}
+          />
 
-          <br /><br />
+          <br />
+          <br />
 
-          <input className="inputField" placeholder="Price"
+          <input
+            className="inputField"
+            placeholder="Price"
             type="text"
-            value={this.priceInput}
-            onChange={this.handlePriceChange}>
-          </input>
+            value={this.state.priceInput}
+            onChange={this.handlePriceChange}
+          />
 
-          <br /><br />
+          <br />
+          <br />
 
-          <textarea className="inputField" placeholder="Description"
+          <textarea
+            className="inputField"
+            placeholder="Description"
             type="text"
-            value={this.descriptionInput}
-            onChange={this.handleDecriptionChange}>
-          </textarea>
+            value={this.state.descriptionInput}
+            onChange={this.handleDecriptionChange}
+          />
 
-          <br /><br />
+          <br />
+          <br />
 
-          <textarea className="inputField" placeholder="Tags eg: vintage, sweater, wool"
-            value={this.tagsInput}
-            onChange={this.handleTagsChange}>
-          </textarea>
+          <textarea
+            className="inputField"
+            placeholder="Tags eg: vintage, sweater, wool"
+            value={this.state.tagsInput}
+            onChange={this.handleTagsChange}
+          />
 
-          <br /><br />
+          <br />
+          <br />
 
-          <input type="file" id="input" onChange={e => this.uploadFile(e.target.files[0])} /> 
+          <input
+            type="file"
+            id="input"
+            onChange={e => this.uploadFile(e.target.files[0])}
+          />
 
-          <br /><br />
+          <br />
+          <br />
 
-          <input type="submit"></input>
-
+          <input type="submit" />
         </form>
-
       </div>
-    )
+    );
   }
 }
 
