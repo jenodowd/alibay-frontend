@@ -7,6 +7,7 @@ import MainNav from './MainNav.js';
 import AccountNav from './AccountNav.js';
 import SideNav from './SideNav.js';
 import CreateListing from './CreateListing.js';
+import Details from './Details.js';
 //import { listings } from './FakeData.js';
 //import { itemIDS } from './FakeData.js';
 import './App.css';
@@ -81,6 +82,10 @@ class App extends Component {
     return <ItemsSold userID={this.state.userID} />
   }
 
+  renderDetails = routerData => {
+    return (<Details itemId={routerData.match.params.id} />)
+  }
+
   F_GoLogin = () => {
     this.setState({loginP:true})
   }
@@ -105,6 +110,7 @@ class App extends Component {
           <Route exact={true} path='/createlisting' render={this.renderCreateListing}/>
           <Route exact={true} path='/itemsbought' render={this.renderItemsBought}/>
           <Route exact={true} path='/itemssold' render={this.renderItemsSold} />
+          <Route exact={true} path='/details/:id' render={this.renderDetails} />
         </div>
         </BrowserRouter>
       </div>

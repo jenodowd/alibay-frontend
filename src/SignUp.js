@@ -56,11 +56,13 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div>
+      <div className = "signUp">
 
-        <form onSubmit={this.handleSignUpSubmit}>
+        <form className ="signUpForm" onSubmit={this.handleSignUpSubmit}>
 
         <button onClick={this.props.F_CloseModal}>close</button>
+
+        <h1>Sign Up</h1>
 
           <input className="inputField" placeholder="First Name"
             type="text"
