@@ -5,7 +5,7 @@ import SignUp from './SignUp.js';
 import SignIn from './SignIn.js';
 import MainNav from './MainNav.js';
 import AccountNav from './AccountNav.js';
-import Search from './Search.js';
+import SideNav from './SideNav.js';
 import CreateListing from './CreateListing.js';
 import { listings } from './FakeData.js';
 import { itemIDS } from './FakeData.js';
