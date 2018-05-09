@@ -24,7 +24,8 @@ class App extends Component {
     this.state = {
       name: undefined,
       userID: undefined,
-      listings : {}
+      listings : {},
+      loginP : false,
     }
   }
   componentDidMount() {
@@ -81,15 +82,25 @@ class App extends Component {
     return <ItemsSold userID={this.state.userID} />
   }
 
+  F_GoLogin = () => {
+    this.setState({loginP:true})
+  }
+
+  F_CloseModal = () => {
+    this.setState({loginP:false})
+  }
+
   render() {
+    var signup = (()=>{if(this.state.loginP===true){return(<SignUp F_CloseModal={this.F_CloseModal}/>)}else{return null}})()
     return (<div>
-        <div>
+        <div> 
         <BrowserRouter>
         <div>
-          <AccountNav name={this.state.name} />
+          {signup}
+          <AccountNav F_GoLogin={this.F_GoLogin} name={this.state.name} />
           <MainNav />
           <Route exact={true} path='/' render={this.renderAllItems} />
-          <Route exact={true} path='/signup' component={SignUp}/>
+          {/* <Route exact={true} path='/signup' component={SignUp}/> */}
           <Route exact={true} path='/signin' render={this.renderSignIn}/>
           <Route exact={true} path='/viewaccount' render={this.renderViewAccount}/>
           <Route exact={true} path='/createlisting' render={this.renderCreateListing}/>
