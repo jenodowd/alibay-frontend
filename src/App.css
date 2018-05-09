@@ -131,3 +131,19 @@ html, body {
   margin: 20px;
   text-align: center;
 }
+
+/* DETAILS */
+
+.detailsImg {
+  position: absolute;
+  height: 500px;
+  width: 700px;
+  display: flex;
+}
+
+.detailsTxt {
+  display: flex;
+  height: 500px;
+  width: 700px;
+  text-align: center
+}

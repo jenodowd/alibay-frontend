@@ -8,8 +8,6 @@ import AccountNav from './AccountNav.js';
 import SideNav from './SideNav.js';
 import CreateListing from './CreateListing.js';
 import Details from './Details.js';
-//import { listings } from './FakeData.js';
-//import { itemIDS } from './FakeData.js';
 import './App.css';
 import ViewAccount from './ViewAccount.js';
 import ItemsBought from './ItemsBought';
@@ -61,10 +59,10 @@ class App extends Component {
 
   renderListings = () => {
     //return (<div>HEY</div>)
-     console.log(this.state.listings)
+     //console.log(this.state.listings)
     return Object.keys(this.state.listings).map(itemID =>{
       return (<div className="items">
-        <Item image={this.state.listings[itemID].image} name={this.state.listings[itemID].itemName} 
+        <Item itemID={itemID} image={this.state.listings[itemID].image} name={this.state.listings[itemID].itemName} 
         description={this.state.listings[itemID].description} price ={this.state.listings[itemID].price} />
       </div>)})
   
@@ -82,8 +80,8 @@ class App extends Component {
     return <ItemsSold userID={this.state.userID} />
   }
 
-  renderDetails = routerData => {
-    return (<Details itemId={routerData.match.params.id} />)
+  renderDetails = (routerData) => {
+    return (<Details itemID={routerData.match.params.id} />)
   }
 
   F_GoLogin = () => {
