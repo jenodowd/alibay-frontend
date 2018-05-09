@@ -12,6 +12,7 @@ import './App.css';
 import ViewAccount from './ViewAccount.js';
 import ItemsBought from './ItemsBought';
 import ItemsSold from './ItemsSold'
+import Cart from './Cart.js'
 
 // let renderAllItems = () => {
 //   return (<div className="sideNavContainer"><SideNav /><div className="allItems">{allItems}</div></div>)
