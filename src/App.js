@@ -64,7 +64,7 @@ class App extends Component {
     return Object.keys(this.state.listings).map(itemID =>{
       return (<div className="items">
         <Item image={this.state.listings[itemID].image} name={this.state.listings[itemID].itemName} 
-        description={this.state.listings[itemID].description} price ={this.state.listings[itemID].price} />}
+        description={this.state.listings[itemID].description} price ={this.state.listings[itemID].price} />
       </div>)})
   
   }
@@ -112,5 +112,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
