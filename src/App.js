@@ -12,7 +12,6 @@ import { itemIDS } from './FakeData.js';
 import './App.css';
 import ViewAccount from './ViewAccount.js';
 
-
 let allItems = itemIDS.map(itemID => <div className="items"><Item 
 image={listings[itemID].image}
 name={listings[itemID].itemName}
@@ -31,7 +30,17 @@ class App extends Component {
       userID: undefined
     }
   }
-
+  componentDidMount() {
+    fetch('/allListings', {
+      method: 'GET'
+    }).then(res => res.text())
+      .then(resB => {
+        let parsed = JSON.parse(resB)
+        let listings = parsed.listings;
+        console.log(listings)
+        this.setState({listings: listings})
+      })
+  }
   setName = (name) => {
     this.setState({ name })
   }
@@ -51,6 +60,10 @@ class App extends Component {
   renderCreateListing = () => {
     return <CreateListing userID={this.state.userID} />
    }
+
+  renderListings = () => {
+    return this.state.listings.map(listing =>{})
+  }
 
   render() {
     return (<div>
