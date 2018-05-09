@@ -17,13 +17,14 @@ handleSearchChange = (event) => {
 
 handleSearchSubmit = (event) => {
   event.preventDefault();
-  let bod = JSON.stringify(
-    {
-      search: this.state.searchInput,
-    }
-  )
-
-  fetch('/searchForListings', { method: 'GET', body: bod })
+  // let bod = JSON.stringify(
+  //   {
+  //     search: this.state.searchInput,
+  //   }
+  // )
+  fetch('/searchForListings?searchTerm=' + this.state.searchInput, { method: 'GET'})
+  .then(response => response.text())
+  .then(response => console.log(response))
 }
 
 render() {

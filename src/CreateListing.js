@@ -12,6 +12,7 @@ class CreateListing extends Component {
       priceInput: undefined,
       descriptionInput: undefined,
       imageInput: undefined,
+      tagsInput: undefined,
     }
 
   }
@@ -30,6 +31,10 @@ class CreateListing extends Component {
 
   handleDecriptionChange = (event) => {
     this.setState({ descriptionInput: event.target.value })
+  }
+
+  handleTagsChange = (event) => {
+    this.setState({ tagsInput: event.target.value })
   }
 
 
@@ -54,6 +59,7 @@ class CreateListing extends Component {
         name: this.state.nameInput,
         price: this.state.priceInput,
         description: this.state.descriptionInput,
+        tags: this.state.tags,
         image: this.state.imageInput
       }
     )
@@ -94,11 +100,18 @@ class CreateListing extends Component {
 
           <br /><br />
 
-          <input className="inputField" placeholder="Description"
+          <textarea className="inputField" placeholder="Description"
             type="text"
             value={this.descriptionInput}
             onChange={this.handleDecriptionChange}>
-          </input>
+          </textarea>
+
+          <br /><br />
+
+          <textarea className="inputField" placeholder="Tags eg: vintage, sweater, wool"
+            value={this.tagsInput}
+            onChange={this.handleTagsChange}>
+          </textarea>
 
           <br /><br />
 
