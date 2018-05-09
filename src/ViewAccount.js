@@ -14,8 +14,8 @@ class ViewAccount extends Component {
         <div>
         {this.props.name && <div className="viewAccount">My Account</div>}
         <div className="accountCategories">
-        <li>Items Bought</li>
-        <li>Items Sold</li>
+        <li><Link className="link" to={'/itemsbought'}>Items Bought</Link></li>
+        <li><Link className="link" to={'/itemssold'}>Items Sold</Link></li>
         </div>
         </div>
             )
