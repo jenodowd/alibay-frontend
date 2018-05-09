@@ -43,9 +43,9 @@ class App extends Component {
   renderSignIn = () => {
    return <SignIn setName={this.setName} setUserID={this.setUserID}/>
   }
-
+  
   renderViewAccount = () =>{
-    return <ViewAccount name={this.state.name}/>
+    return <ViewAccount name={this.state.name} userID={this.state.userID}/>
   }
 
   renderCreateListing = () => {
