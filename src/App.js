@@ -20,7 +20,7 @@ description={listings[itemID].description}
 price ={listings[itemID].price}  /></div>)
 
 let renderAllItems = () => {
-  return (<div className = "searchContainer"><Search /><div className="allItems">{allItems}</div></div>)
+  return (<div className="sideNavContainer"><SideNav /><div className="allItems">{allItems}</div></div>)
 }
 
 class App extends Component {
