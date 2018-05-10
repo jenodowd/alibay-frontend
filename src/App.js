@@ -119,7 +119,7 @@ class App extends Component {
   }
 
   renderDetails = (routerData) => {
-    return (<Details itemID={routerData.match.params.id} />)
+    return (<Details itemID={routerData.match.params.id} userID={this.state.userID} />)
   }
 
   renderSignUp = () => {
@@ -163,7 +163,13 @@ class App extends Component {
           {signIn}
           <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} name={this.state.name} userID={this.state.userID}/>
           {/* <MainNav /> */}
+<<<<<<< HEAD
           <div className ="content">
+=======
+
+          <div className ="content">
+
+>>>>>>> db723182d0f1ab198ecdc28fb2a55be938dbb7c1
           <Route exact={true} path='/' render={this.renderAllItems} />
           <Route exact={true} path='/lowtohigh' render={this.renderItemsLowToHigh} />
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
