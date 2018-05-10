@@ -83,18 +83,12 @@ class App extends Component {
   //LOW TO HIGH
 
   renderLowToHigh = () => {
-    // newListings.sort(function(obj1, obj2) {
-    //   console.log(newListings[obj1].price)
-    //   return newListings[obj1].price - newListings[obj2].price;
-    // })
 
-    // Object.keys(newListings).sort()
-    
-
+  
     let sortedListingIDs = Object.keys(this.state.listings).sort((key1, key2) => {
        return this.state.listings[key1].price - this.state.listings[key2].price 
      })
-     
+
     return sortedListingIDs.map(itemID =>{
       return (<div className="items">
         <Item itemID={itemID} image={this.state.listings[itemID].image} name={this.state.listings[itemID].itemName} 
