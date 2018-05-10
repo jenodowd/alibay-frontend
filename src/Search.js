@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 import './App.css';
+import Item from "./Item.js";
 
 class Search extends Component {
   constructor() {
@@ -8,6 +9,7 @@ class Search extends Component {
 
     this.state = {
       searchInput: undefined,
+      searchItems: []
     }
   }
 
@@ -17,15 +19,41 @@ handleSearchChange = (event) => {
 
 handleSearchSubmit = (event) => {
   event.preventDefault();
-  // let bod = JSON.stringify(
-  //   {
-  //     search: this.state.searchInput,
-  //   }
-  // )
   fetch('/searchForListings?searchTerm=' + this.state.searchInput, { method: 'GET'})
   .then(response => response.text())
-  .then(response => console.log(response))
+  .then(responseBody=> {
+    let parsed = JSON.parse(responseBody);
+    let itemIDs = parsed.itemIDs
+    this.setState({searchItems: itemIDs})
+    this.setSearchItems(this.state.searchItems)})
 }
+
+setSearchItems = async itemIDs => {
+  let responses = await Promise.all(
+    itemIDs.map(itemID =>
+    fetch("getItemDetails?itemID="+ itemID, {method:'GET'}).then(res =>res.json())
+  )
+  )
+  let itemObjects = responses.map((res, i)=>({ ...res.details, itemID: itemIDs[i]}))
+  this.props.setSearchItemIDs(itemObjects)
+//  this.displaySearchItems()
+}
+
+// displaySearchItems = () => {
+//   return this.state.searchItems.map(item => {
+//     return (
+//       <div className="items">
+//         <Item itemID={item.itemID}
+//           image={item.image}
+//           name={item.itemName}
+//           description={item.description}
+//           price={item.price}
+//         />
+//       </div>
+//     );
+//   });
+
+// }
 
 render() {
   return (
@@ -34,7 +62,7 @@ render() {
         <input type="text" value={this.searchInput} onChange={this.handleSearchChange}></input>
         <input type="submit"></input>
       </form>
-    </div>
+      </div>
     )
   }
 }

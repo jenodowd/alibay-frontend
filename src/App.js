@@ -11,8 +11,9 @@ import Details from './Details.js';
 import './App.css';
 import ViewAccount from './ViewAccount.js';
 import ItemsBought from './ItemsBought';
-import ItemsSold from './ItemsSold'
-import Cart from './Cart.js'
+import ItemsSold from './ItemsSold';
+import Cart from './Cart.js';
+import Search from './Search.js';
 
 // let renderAllItems = () => {
 //   return (<div className="sideNavContainer"><SideNav /><div className="allItems">{allItems}</div></div>)
@@ -76,7 +77,7 @@ class App extends Component {
   }
 
   renderAllItems = () => {
-    return (<div className="sideNavContainer"><SideNav /><div className="allItems">{this.renderListings()}</div></div>)
+    return (<div className="sideNavContainer"><SideNav setSearchItemIDs={this.setSearchItemIDs}/><div className="allItems">{this.renderListings()}</div></div>)
   }
 
   renderItemsBought = () =>{
@@ -111,6 +112,14 @@ class App extends Component {
     return (<Cart userID={routerData.match.params.userID}/>)
   }
 
+  renderSearchItems = () => {
+    return (<Search setSearchItemIDs={this.setSearchItemIDs}/>)
+  }
+
+  setSearchItemIDs = (items) =>{
+    this.setState({listings:items})
+    this.renderListings()
+  }
   render() {
 
     let signUp = (()=>{if(this.state.showSignUp===true){return(<SignUp closeSignUp={this.closeSignUp}/>)}else{return null}})()
@@ -123,7 +132,14 @@ class App extends Component {
           {signIn}
           <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} name={this.state.name} userID={this.state.userID}/>
           {/* <MainNav /> */}
+<<<<<<< HEAD
           <div className ="content">
+=======
+<<<<<<< HEAD
+          <div className ="content">
+=======
+>>>>>>> 742fb5a64906d9516d170e5f1bf67315607c89f1
+>>>>>>> f89273bb9f7035222f3bb8e1fdb52dd232f4c39b
           <Route exact={true} path='/' render={this.renderAllItems} />
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
           {/* <Route exact={true} path='/signin' render={this.renderSignIn}/> */}

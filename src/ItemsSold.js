@@ -6,7 +6,6 @@ import Item from "./Item.js";
 class ItemsSold extends Component {
   constructor() {
     super();
-
     this.state = {itemsSold:[]};
   }
   componentDidMount() {
