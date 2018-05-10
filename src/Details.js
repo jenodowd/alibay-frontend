@@ -36,6 +36,7 @@ class Details extends Component {
     .then (resB => {
       let parsed = JSON.parse(resB);
       let itemIDs = parsed.itemIDs;
+      this.setState({cartItemIDs: itemIDs})
     })
   }
   
