@@ -112,7 +112,7 @@ class App extends Component {
   }
 
   renderDetails = (routerData) => {
-    return (<Details itemID={routerData.match.params.id} />)
+    return (<Details itemID={routerData.match.params.id} userID={this.state.userID} />)
   }
 
   renderSignUp = () => {
