@@ -24,7 +24,7 @@ class App extends Component {
     super();
     this.state = {
       name: undefined,
-      userID: undefined,
+      userID: "",
       listings: {},
       showSignUp: false,
       showSignIn: false,

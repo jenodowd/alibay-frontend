@@ -41,12 +41,14 @@ class ItemsSold extends Component {
     return this.state.itemsSold.map(item => {
       return (
         <div className="items">
+        <div className="items">
           <Item itemID={item.itemID}
             image={item.image}
             name={item.itemName}
             description={item.description}
             price={item.price}
           />
+        </div>
         </div>
       );
     });
@@ -58,7 +60,7 @@ class ItemsSold extends Component {
       <div>
         {this.props.name && <div className="viewAccount">My Account</div>}
         <h1>Items Sold</h1>
-        <div>{this.displayItemsSold()}</div>
+        <div className="accountItems">{this.displayItemsSold()}</div>
       </div>
     );
   }

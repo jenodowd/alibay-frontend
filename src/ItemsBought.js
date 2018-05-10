@@ -16,7 +16,8 @@ class ItemsBought extends Component {
       .then(response => response.text())
       .then(responseBody => {
         let parsed = JSON.parse(responseBody);
-        if (responseBody.success){
+        console.log(parsed)
+        if (parsed.success){
         let itemsBought = parsed.itemIDs;
         this.setBoughtItems(itemsBought);
         }
@@ -35,19 +36,21 @@ class ItemsBought extends Component {
   };
 
   displayItemsBought = () => {
-    console.log(this.state.itemsBought)
+
     if (Object.keys(this.state.itemsBought).length === 0) {
       return (<div>No previous items bought</div>) }
     else {
       return this.state.itemsBought.map(item => {
       return (
-        <div>
+        <div className="items">
+          <div className="items">
           <Item itemID={item.itemID}
             image={item.image}
             name={item.itemName}
             description={item.description}
             price={item.price}
           />
+          </div>
         </div>
       );
     });}
@@ -59,7 +62,7 @@ class ItemsBought extends Component {
       <div>
         {this.props.name && <div className="viewAccount">My Account</div>}
         <h1>Items Bought</h1>
-        <div>{this.displayItemsBought()}</div>
+        <div className="accountItems">{this.displayItemsBought()}</div>
       </div>
     );
   }

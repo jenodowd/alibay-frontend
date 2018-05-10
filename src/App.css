@@ -170,15 +170,10 @@ html, body {
 
 /* VIEW ACCOUNT */
 .viewAccount{
-  display:flex;
   padding:20px;
   margin: 10px;
   width:400px;
   height:400px;}
-
-.accountDetails{
-  display:flex;
-}
 
 /* POST ITEM */
 
@@ -192,4 +187,8 @@ html, body {
 
 .content {
   margin-top: 90px;
+}
+
+.accountItems{
+  display:flex;
 }
