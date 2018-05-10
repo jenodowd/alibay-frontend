@@ -26,6 +26,7 @@ class App extends Component {
       userID: undefined,
       listings : {},
       showSignUp : false,
+      showSignIn : false,
     }
   }
   componentDidMount() {
@@ -46,9 +47,9 @@ class App extends Component {
     this.setState({ userID })
   }
 
-  renderSignIn = () => {
-   return <SignIn setName={this.setName} setUserID={this.setUserID}/>
-  }
+  // renderSignIn = () => {
+  //  return <SignIn setName={this.setName} setUserID={this.setUserID}/>
+  // }
   
   renderViewAccount = () =>{
     return <ViewAccount name={this.state.name} userID={this.state.userID}/>
@@ -93,22 +94,33 @@ class App extends Component {
     this.setState({showSignUp: false})
   }
 
+  renderSignIn = () => {
+    this.setState({showSignIn: true})
+  }
+
+  closeSignIn = () => {
+    this.setState({showSignIn: false})
+  }
+
   renderCart = (routerData) => {
     return (<Cart userID={routerData.match.params.userID}/>)
   }
 
   render() {
-    var signup = (()=>{if(this.state.showSignUp===true){return(<SignUp closeSignUp={this.closeSignUp}/>)}else{return null}})()
+
+    let signUp = (()=>{if(this.state.showSignUp===true){return(<SignUp closeSignUp={this.closeSignUp}/>)}else{return null}})()
+    let signIn = (()=>{if(this.state.showSignIn===true){return(<SignIn setName={this.setName} setUserID={this.setUserID} closeSignIn={this.closeSignIn}/>)}else{return null}})()
     return (<div>
         <div> 
         <BrowserRouter>
         <div>
-          {signup}
-          <AccountNav renderSignUp={this.renderSignUp} name={this.state.name} />
+          {signUp}
+          {signIn}
+          <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} name={this.state.name} />
           <MainNav />
           <Route exact={true} path='/' render={this.renderAllItems} />
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
-          <Route exact={true} path='/signin' render={this.renderSignIn}/>
+          {/* <Route exact={true} path='/signin' render={this.renderSignIn}/> */}
           <Route exact={true} path='/viewaccount' render={this.renderViewAccount}/>
           <Route exact={true} path='/createlisting' render={this.renderCreateListing}/>
           <Route exact={true} path='/itemsbought' render={this.renderItemsBought}/>
