@@ -28,7 +28,8 @@ class App extends Component {
       listings : {},
       showSignUp : false,
       showSignIn : false,
-      email: undefined
+      email: undefined,
+      searchResults: false
     }
   }
   componentDidMount() {
@@ -62,14 +63,17 @@ class App extends Component {
    }
 
   renderListings = () => {
-    //return (<div>HEY</div>)
-     //console.log(this.state.listings)
+
+     if (Object.keys(this.state.listings).length === 0) {
+       return (<div>No results...please search again</div>)
+      }
+     else {
     return Object.keys(this.state.listings).map(itemID =>{
       return (<div className="items">
         <Item itemID={itemID} image={this.state.listings[itemID].image} name={this.state.listings[itemID].itemName} 
         description={this.state.listings[itemID].description} price ={this.state.listings[itemID].price} />
       </div>)})
-  }
+  }}
 
   renderAllItems = () => {
     return (<div className="sideNavContainer"><SideNav setSearchItemIDs={this.setSearchItemIDs}/><div className="allItems">{this.renderListings()}</div></div>)
@@ -136,7 +140,7 @@ class App extends Component {
   }
 
   setSearchItemIDs = (items) =>{
-    this.setState({listings:items})
+    this.setState({listings:items, searchResults:true})
     this.renderListings()
   }
 
@@ -173,6 +177,5 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;

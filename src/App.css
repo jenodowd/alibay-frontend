@@ -29,7 +29,11 @@ html, body {
 
 .card {
   display: inline-block;
-  margin: 10px;
+  margin: 20px;
+}
+
+.images {
+  width: 250px;
 }
 
 /* MAIN NAV */
