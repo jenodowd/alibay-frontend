@@ -32,7 +32,6 @@ class ItemsBought extends Component {
   };
 
   displayItemsBought = () => {
-    console.log(this.state.itemsBought)
     return this.state.itemsBought.map(item => {
       return (
         <div className="items">
