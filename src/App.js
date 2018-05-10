@@ -17,7 +17,7 @@ import Search from './Search.js';
 
 // let renderAllItems = () => {
 //   return (<div className="sideNavContainer"><SideNav /><div className="allItems">{allItems}</div></div>)
-// }
+// } 
 
 class App extends Component {
   constructor() {
