@@ -8,8 +8,8 @@ class MainNav extends Component {
       <div className='mainNav'>
         <ul className="mainNavUL">
           <li className="logo"><Link className="link" to={'/'}> LOGO </Link> &nbsp; </li> 
-          <li className="mainNavLI"><Link className="link" to={'/'}> Home &amp; Garden </Link> &nbsp; | &nbsp; </li> 
-          <li className="mainNavLI"><Link className="link" to={'/'}> Fashion </Link> &nbsp; | &nbsp; </li> 
+          <li className="mainNavLI"><Link className="link" to={'/'}> Home &amp; Garden </Link> &nbsp; &nbsp; </li> 
+          <li className="mainNavLI"><Link className="link" to={'/'}> Fashion </Link> &nbsp; &nbsp; </li> 
           <li className="mainNavLI"><Link className="link" to={'/'}> Accessories </Link></li> 
         </ul>
       </div>
