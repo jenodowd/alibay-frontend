@@ -91,7 +91,6 @@ class App extends Component {
 
   renderLowToHigh = () => {
 
-  
     let sortedListingIDs = Object.keys(this.state.listings).sort((key1, key2) => {
        return this.state.listings[key1].price - this.state.listings[key2].price 
      })
@@ -105,6 +104,25 @@ class App extends Component {
 
   renderItemsLowToHigh = () => {
     return (<div className="sideNavContainer"><SideNav setSearchItemIDs={this.setSearchItemIDs}/><div className="allItems">{this.renderLowToHigh()}</div></div>)
+  }
+
+  //
+
+  renderHighToLow = () => {
+
+    let sortedListingIDs = Object.keys(this.state.listings).sort((key1, key2) => {
+       return this.state.listings[key2].price - this.state.listings[key1].price 
+     })
+
+    return sortedListingIDs.map(itemID =>{
+      return (<div className="items">
+        <Item itemID={itemID} image={this.state.listings[itemID].image} name={this.state.listings[itemID].itemName} 
+        description={this.state.listings[itemID].description} price ={this.state.listings[itemID].price} />
+      </div>)})
+  }
+
+  renderItemHighToLow = () => {
+    return (<div className="sideNavContainer"><SideNav setSearchItemIDs={this.setSearchItemIDs}/><div className="allItems">{this.renderHighToLow()}</div></div>)
   }
 
   //
@@ -166,6 +184,7 @@ class App extends Component {
           <div className ="content">
           <Route exact={true} path='/' render={this.renderAllItems} />
           <Route exact={true} path='/lowtohigh' render={this.renderItemsLowToHigh} />
+          <Route exact={true} path='/hightolow' render={this.renderItemHighToLow} />
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
           {/* <Route exact={true} path='/signin' render={this.renderSignIn}/> */}
           <Route exact={true} path='/viewaccount' render={this.renderViewAccount}/>
