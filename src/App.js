@@ -68,15 +68,18 @@ class App extends Component {
        return (<div>No results...please search again</div>)
       }
      else {
-    return Object.keys(this.state.listings).map(itemID =>{
+    let top = this.state.searchResults && (<div>{Object.keys(this.state.listings).length} results</div>)
+
+    let bot = Object.keys(this.state.listings).map(itemID =>{
       return (<div className="items">
+        <div className="items">
         <Item itemID={itemID} image={this.state.listings[itemID].image} name={this.state.listings[itemID].itemName} 
         description={this.state.listings[itemID].description} price ={this.state.listings[itemID].price} />
-      </div>)})
-<<<<<<< HEAD
+        </div>
+      </div>
+      )})
+      return (<div>{top}{bot}</div>)
      }
-=======
->>>>>>> 77e6ee8fff440d308892106eb190e04548c3d255
   }
 
   renderAllItems = () => {
@@ -166,13 +169,7 @@ class App extends Component {
           {signIn}
           <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} name={this.state.name} userID={this.state.userID}/>
           {/* <MainNav /> */}
-<<<<<<< HEAD
           <div className ="content">
-=======
-
-          <div className ="content">
-
->>>>>>> 77e6ee8fff440d308892106eb190e04548c3d255
           <Route exact={true} path='/' render={this.renderAllItems} />
           <Route exact={true} path='/lowtohigh' render={this.renderItemsLowToHigh} />
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
