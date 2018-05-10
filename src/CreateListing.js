@@ -91,6 +91,7 @@ class CreateListing extends Component {
         {this.state.submitted ? <h5><button onClick={this.props.closeCreateListing}>close</button>Thank you for the submission!</h5> : null}
         <button onClick={this.props.closeCreateListing}>close</button>
         <form className = "signUpForm" onSubmit={this.handleCreateListingSubmit}>
+          <h1>Create Listing</h1>
           <input
             className="inputField"
             placeholder="Name"

@@ -335,6 +335,7 @@ class App extends Component {
             setName={this.setName}
             setUserID={this.setUserID}
             setEmail={this.setEmail}
+            renderSignIn={this.renderSignIn}
             closeSignIn={this.closeSignIn}
           />
         );
