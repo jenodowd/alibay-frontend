@@ -309,7 +309,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.counter);
     let createlisting = (() => {
       if (this.state.showCreateListing === true) {
         return (

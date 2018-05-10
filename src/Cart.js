@@ -26,7 +26,7 @@ class Cart extends Component {
     getCartItemDetails = async itemIDs => {
         let responses = await Promise.all(
             itemIDs.map(itemID => 
-              fetch("getItemDetails?itemID=" + itemID, { method: "GET" }).then(res => res.json())
+              fetch("/getItemDetails?itemID=" + itemID, { method: "GET" }).then(res => res.json())
             )
           );
           let itemObjects = responses.map((res, i) => ({ ...res.details, itemID: itemIDs[i] }));
