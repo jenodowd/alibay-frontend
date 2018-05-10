@@ -163,7 +163,9 @@ class App extends Component {
           {signIn}
           <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} name={this.state.name} userID={this.state.userID}/>
           {/* <MainNav /> */}
+
           <div className ="content">
+
           <Route exact={true} path='/' render={this.renderAllItems} />
           <Route exact={true} path='/lowtohigh' render={this.renderItemsLowToHigh} />
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
