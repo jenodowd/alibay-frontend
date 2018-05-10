@@ -38,7 +38,7 @@ class Cart extends Component {
           return (<div className="items">
             <Item itemID={item.itemID} image={item.image} name={item.itemName} 
             description={item.description} price={item.price} />
-            <button>Remove from cart</button>
+            <button className="removeButton">Remove from cart</button>
           </div>)})
       
       }
