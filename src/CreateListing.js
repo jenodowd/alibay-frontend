@@ -87,9 +87,10 @@ class CreateListing extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.submitted ? <h5>Thank you for the submission!</h5> : null}
-        <form onSubmit={this.handleCreateListingSubmit}>
+      <div className = "signUp">
+        {this.state.submitted ? <h5><button onClick={this.props.closeCreateListing}>close</button>Thank you for the submission!</h5> : null}
+        <button onClick={this.props.closeCreateListing}>close</button>
+        <form className = "signUpForm" onSubmit={this.handleCreateListingSubmit}>
           <input
             className="inputField"
             placeholder="Name"
