@@ -174,8 +174,10 @@ html, body {
   padding:20px;
   margin: 10px;
   width:400px;
-  height:400px;
-  border: 2px solid black; 
+  height:400px;}
+
+.accountDetails{
+  display:flex;
 }
 
 /* POST ITEM */
