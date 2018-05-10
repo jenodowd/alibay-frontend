@@ -7,8 +7,8 @@ class SignIn extends Component {
     super();
 
     this.state = {
-      emailInput: "caroline.song@email.com",
-      passwordInput: "bye123",
+      emailInput: "",
+      passwordInput: "",
       loggedIn: false
     };
   }
@@ -40,8 +40,13 @@ class SignIn extends Component {
           this.props.setName(responseBody.firstName);
           this.props.setUserID(responseBody.userID);
           this.props.setEmail(responseBody.email);
+          fetch('/getCart?userID=' + responseBody.userID)
+          .then(res=>res.json())
+          .then(res => {
+            this.props.setCounter(res.itemIDs.length)
+          })
         } else console.log("login failed");
-      });
+      })
   };
 
   render() {

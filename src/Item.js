@@ -4,11 +4,12 @@ import './App.css';
 
 class Item extends Component {
   render() {
+    console.log(this.props.image)
     return (
       <div className="card">
       <div>
         <Link to={"/details/" + this.props.itemID}> 
-          <img className="images" src={this.props.image} alt="null" linkto/>
+          <img className="images" src={'/' + this.props.image} alt="null" linkto/>
         </Link>
           <div>{this.props.name}</div>
           <div>${this.props.price}</div>
