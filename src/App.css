@@ -32,54 +32,14 @@ html, body {
   margin: 10px;
 }
 
-/* ACCOUNT NAV */
-
-.accountNavUL {
-  list-style-type: none;
-  text-align: right;
-  /* margin: 13px; */
-  padding: 0;
-  font-size: 14px;
-  vertical-align: middle;
-  /* min-width: 800px; */
-}
-
-/* .accountNav {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 45px;
-} */
-
-.accountNav {
-  position: relative;
-  float: right;
-  vertical-align: middle;
-  margin-top: 10px;
-  /* min-width: 800px; */
-}
-
-.accountNavLI {
-  display: inline;
-  vertical-align: middle;
-  /* min-width: 800px; */
-} 
-
 /* MAIN NAV */
-
-/* .mainNav {
-  margin-top: 70px;
-  min-width: 800px;
-} */
 
 .nav{
   display: flex;
-  min-width: 800px;
+  min-width: 900px;
   width: 100vw;
-  height: 50px;
+  height: 65px;
+  border-bottom: 2px solid black;
 }
 
 .mainNavUL {
@@ -87,20 +47,42 @@ html, body {
   margin: 20px;
   padding: 0;
   font-size: 17px;
-  /* min-width: 800px; */
 }
 
 .mainNavLI {
   display: inline;
   vertical-align: middle;
-  /* min-width: 800px; */
 }
 
 .logo {
   font-size: 20px;
   display: inline;
   vertical-align: middle;
-  /* min-width: 800px; */
+} 
+
+/* ACCOUNT NAV */
+
+.accountNav {
+  /* position: relative;
+  float: right; */
+  /* position: absolute;
+  right: 0; */
+  vertical-align: middle;
+  margin-top: 5px;
+  margin-right: 20px;
+}
+
+.accountNavUL {
+  list-style-type: none;
+  text-align: right;
+  padding: 0;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.accountNavLI {
+  display: inline;
+  vertical-align: middle;
 } 
 
 /* SIDE NAV */
@@ -135,6 +117,10 @@ html, body {
   margin: 20px;
 }
 
+.space {
+  flex-grow: 1
+}
+
 /* SIGN UP */
 
 .signUp {
@@ -158,9 +144,6 @@ html, body {
   margin-top: 100px;
 }
 
-
-
-
 /* DETAILS */
 .details {
   display: flex;
@@ -182,6 +165,14 @@ html, body {
  display:flex;
   padding:100px;
   margin: 10px;
+}
 
+/* POST ITEM */
 
+.postItem {
+  font-weight: bold;
+  background-color: #d6f2ea;
+  width: 90px;
+  height: 30px;
+  border: 2px solid black;
 }
