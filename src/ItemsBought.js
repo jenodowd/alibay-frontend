@@ -16,15 +16,15 @@ class ItemsBought extends Component {
       .then(response => response.text())
       .then(responseBody => {
         let parsed = JSON.parse(responseBody);
+        if (responseBody.success){
         let itemsBought = parsed.itemIDs;
         this.setBoughtItems(itemsBought);
+        }
+      
       });
   }
 
-  
-
   setBoughtItems = async itemsBought => {
-    
     let responses = await Promise.all(
       itemsBought.map(itemID => 
         fetch("getItemDetails?itemID=" + itemID, { method: "GET" }).then(res => res.json())
@@ -35,13 +35,13 @@ class ItemsBought extends Component {
   };
 
   displayItemsBought = () => {
-
+    console.log(this.state.itemsBought)
     if (Object.keys(this.state.itemsBought).length === 0) {
       return (<div>No previous items bought</div>) }
-  
+    else {
       return this.state.itemsBought.map(item => {
       return (
-        <div className="items">
+        <div>
           <Item itemID={item.itemID}
             image={item.image}
             name={item.itemName}
@@ -50,7 +50,7 @@ class ItemsBought extends Component {
           />
         </div>
       );
-    });
+    });}
   };
 
   render() {
@@ -58,9 +58,8 @@ class ItemsBought extends Component {
     return (
       <div>
         {this.props.name && <div className="viewAccount">My Account</div>}
-        <div>Items Bought</div>
+        <h1>Items Bought</h1>
         <div>{this.displayItemsBought()}</div>
-        <div><Link className="link" to={'/viewaccount'}>Return to your account</Link></div>
       </div>
     );
   }
