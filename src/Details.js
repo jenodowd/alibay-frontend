@@ -4,13 +4,14 @@ import { listings } from './FakeData.js';
 import './App.css';
 
 class Details extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       image: '',
       description: '',
       price: '',
-      itemName: ''
+      itemName: '',
+      cartItemIDs: []
     }
   }
 
@@ -29,6 +30,8 @@ class Details extends Component {
 
   addToCart = () => {
     let body = JSON.stringify({userID: this.props.userID , itemID: this.props.itemID})
+    console.log(body)
+    console.log(this.props.userID)
     fetch('/addToCart', {
       method: 'POST',
       body: body
@@ -37,6 +40,7 @@ class Details extends Component {
       let parsed = JSON.parse(resB);
       let itemIDs = parsed.itemIDs;
       this.setState({cartItemIDs: itemIDs})
+      console.log(this.state.cartItemIDs)
     })
   }
   
