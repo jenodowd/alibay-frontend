@@ -308,6 +308,10 @@ class App extends Component {
     this.setState({ counter: this.state.counter + 1 });
   };
 
+  setCounter = (val) => {
+    this.setState({ counter: val });
+  };
+
   render() {
     let createlisting = (() => {
       if (this.state.showCreateListing === true) {
@@ -337,6 +341,7 @@ class App extends Component {
             setEmail={this.setEmail}
             renderSignIn={this.renderSignIn}
             closeSignIn={this.closeSignIn}
+            setCounter={this.setCounter}
           />
         );
       } else {
