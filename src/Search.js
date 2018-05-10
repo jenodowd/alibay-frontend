@@ -36,30 +36,17 @@ setSearchItems = async itemIDs => {
   )
   let itemObjects = responses.map((res, i)=>({ ...res.details, itemID: itemIDs[i]}))
   this.props.setSearchItemIDs(itemObjects)
-//  this.displaySearchItems()
+  this.setState({searchInput: ""})
+
 }
 
-// displaySearchItems = () => {
-//   return this.state.searchItems.map(item => {
-//     return (
-//       <div className="items">
-//         <Item itemID={item.itemID}
-//           image={item.image}
-//           name={item.itemName}
-//           description={item.description}
-//           price={item.price}
-//         />
-//       </div>
-//     );
-//   });
 
-// }
 
 render() {
   return (
     <div className="search">
       <form onSubmit={this.handleSearchSubmit}>
-        <input type="text" value={this.searchInput} onChange={this.handleSearchChange}></input>
+        <input type="text" value={this.state.searchInput} onChange={this.handleSearchChange}></input>
         <input type="submit"></input>
       </form>
       </div>
