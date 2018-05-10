@@ -53,6 +53,7 @@ class ItemsBought extends Component {
         {this.props.name && <div className="viewAccount">My Account</div>}
         <div>Items Bought</div>
         <div>{this.displayItemsBought()}</div>
+        <div><Link className="link" to={'/viewaccount'}>Return to your account</Link></div>
       </div>
     );
   }
