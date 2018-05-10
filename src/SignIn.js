@@ -7,16 +7,10 @@ class SignIn extends Component {
     super();
 
     this.state = {
-<<<<<<< HEAD
-      emailInput: "caroline.song@email.com",
-      passwordInput: "bye123",
-      loggedIn: false,
-      loginFailed: false
-=======
       emailInput: "",
       passwordInput: "",
-      loggedIn: false
->>>>>>> 04e6eed1c4fcc44deee2bbb4fe0b0f7a28b0464a
+      loggedIn: false,
+      loginFailed: false,
     };
   }
 
@@ -47,12 +41,6 @@ class SignIn extends Component {
           this.props.setName(responseBody.firstName);
           this.props.setUserID(responseBody.userID);
           this.props.setEmail(responseBody.email);
-<<<<<<< HEAD
-        } else {
-          this.setState({ loginFailed: true });
-        }
-      });
-=======
           fetch('/getCart?userID=' + responseBody.userID)
           .then(res=>res.json())
           .then(res => {
@@ -60,7 +48,6 @@ class SignIn extends Component {
           })
         } else console.log("login failed");
       })
->>>>>>> 04e6eed1c4fcc44deee2bbb4fe0b0f7a28b0464a
   };
 
   handleLoginFail = () => {
