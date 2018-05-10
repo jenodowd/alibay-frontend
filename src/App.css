@@ -175,6 +175,10 @@ html, body {
   width:400px;
   height:400px;}
 
+.accountItems{
+  display:flex;
+}
+
 /* POST ITEM */
 
 .postItem {
@@ -187,8 +191,4 @@ html, body {
 
 .content {
   margin-top: 90px;
-}
-
-.accountItems{
-  display:flex;
 }
