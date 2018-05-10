@@ -11,7 +11,8 @@ class Details extends Component {
       description: '',
       price: '',
       itemName: '',
-      cartItemIDs: []
+      cartItemIDs: [],
+      needToSignIn : false,
     }
   }
 
@@ -29,21 +30,25 @@ class Details extends Component {
   }
 
   addToCart = () => {
-    let body = JSON.stringify({userID: this.props.userID , itemID: this.props.itemID})
-    console.log(body)
     console.log(this.props.userID)
-    fetch('/addToCart', {
-      method: 'POST',
-      body: body
-    }).then(res=>res.text())
-    .then (resB => {
-      let parsed = JSON.parse(resB);
-      let itemIDs = parsed.itemIDs;
-      this.setState({cartItemIDs: itemIDs})
-      console.log(this.state.cartItemIDs)
-    })
+    if (this.props.userID === undefined) {
+      this.setState({needToSignIn: true});
+    } else {  
+      let body = JSON.stringify({userID: this.props.userID , itemID: this.props.itemID})
+      console.log(body)
+      console.log(this.props.userID)
+      fetch('/addToCart', {
+        method: 'POST',
+        body: body
+      }).then(res=>res.text())
+      .then (resB => {
+        let parsed = JSON.parse(resB);
+        let itemIDs = parsed.itemIDs;
+        this.setState({cartItemIDs: itemIDs})
+        console.log(this.state.cartItemIDs)
+      })
+    }
   }
-  
   render() {
     //console.log(this.state.image)
     return (
@@ -53,6 +58,7 @@ class Details extends Component {
           <h2>{this.state.itemName}</h2>
           <div className="detailDesc">{this.state.description}</div>
           <h4>${this.state.price}</h4>
+          {this.state.needToSignIn? <div>Please create an account and sign in</div>: null}
           <button onClick={this.addToCart}>Add to cart</button>
           </div>
       </div>
