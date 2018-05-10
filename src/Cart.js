@@ -17,8 +17,8 @@ class Cart extends Component {
         }).then(res=>res.text())
         .then(resB=> {
             let parsed = JSON.parse(resB);
-            console.log(parsed)
             let itemIDs = parsed.itemIDs;
+            console.log(itemIDs)
             this.getCartItemDetails(itemIDs)
         })
       }
@@ -30,7 +30,7 @@ class Cart extends Component {
             )
           );
           let itemObjects = responses.map((res, i) => ({ ...res.details, itemID: itemIDs[i] }));
-          this.setState({ itemsIDs: itemObjects });
+          this.setState({ itemIDs: itemObjects });
         };
     
     renderItems = () => {
@@ -46,9 +46,9 @@ class Cart extends Component {
     return (
       <div className="card">
         {this.props.name && <div className="viewAccount">My Account</div>}
-        <div>Items in your cart</div>
+        <h2>Items in your cart</h2>
         <div>{this.renderItems()}</div>
-        <div><Link className="link" to={'/viewaccount'}>Return to your account</Link></div>
+        <div><button><Link className="link" to={'/viewaccount'}>Return to your account</Link></button></div>
       </div>
           )
         }
