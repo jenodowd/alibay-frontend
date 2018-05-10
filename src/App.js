@@ -132,14 +132,8 @@ class App extends Component {
           {signIn}
           <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} name={this.state.name} userID={this.state.userID}/>
           {/* <MainNav /> */}
-<<<<<<< HEAD
           <div className ="content">
-=======
-<<<<<<< HEAD
-          <div className ="content">
-=======
->>>>>>> 742fb5a64906d9516d170e5f1bf67315607c89f1
->>>>>>> f89273bb9f7035222f3bb8e1fdb52dd232f4c39b
+
           <Route exact={true} path='/' render={this.renderAllItems} />
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
           {/* <Route exact={true} path='/signin' render={this.renderSignIn}/> */}
