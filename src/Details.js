@@ -39,9 +39,9 @@ class Details extends Component {
       <div className="details">
           <img className="detailImg" src={"/"+this.state.image} alt="null" />
           <div className="detailTxt">
-          <div>{this.state.itemName}</div>
-          <div>{this.state.description}</div>
-          <div>${this.state.price}</div>
+          <h2>{this.state.itemName}</h2>
+          <div className="detailDesc">{this.state.description}</div>
+          <h4>${this.state.price}</h4>
           <button onClick={this.addToCart}>Add to cart</button>
           </div>
       </div>
