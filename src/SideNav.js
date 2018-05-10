@@ -17,8 +17,9 @@ class SideNav extends Component {
           <li className="sideNavTitle">Price</li>
           <li className="sideNavLI"><Link className ="link" to={'/lowtohigh'}>Low to High</Link></li>
           <li className="sideNavLI"><Link className ="link" to={'/hightolow'}>High to Low</Link></li>
-          <li className="sideNavTitle">Recently Added</li>
           <li className="sideNavTitle">Deals</li>
+          <li className="sideNavLI"><Link className ="link" to={'/deals'}>$25 and under</Link></li>
+          <li className="sideNavTitle"><Link className="link" to={'/popular'}>Most Popular</Link></li>
         </ul>
       </div>
           )

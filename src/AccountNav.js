@@ -20,7 +20,7 @@ class AccountNav extends Component {
           {!this.props.name && <li className="accountNavLI"><button className="link" onClick={this.props.renderSignIn}>Login</button> &nbsp; </li>}
           {!this.props.name && <li className="accountNavLI"><button className="link" onClick={this.props.renderSignUp}>Sign Up</button> &nbsp; </li>}
           {this.props.name && <li className="accountNavLI"><button className="postItem" onClick={this.props.renderCreateListing}>POST ITEM</button> &nbsp; </li>}
-          {this.props.name && <li className="accountNavLI"><button><Link className="link" to={'/cart/'+ this.props.userID}>Shopping Cart</Link></button></li>}
+    {this.props.name && <li className="accountNavLI"><button><Link className="link" to={'/cart/'+ this.props.userID}>Shopping Cart ({this.props.counter})</Link></button></li>}
         </ul>
       </div>
       </div>
