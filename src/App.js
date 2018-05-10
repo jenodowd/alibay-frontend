@@ -30,7 +30,8 @@ class App extends Component {
       showSignIn : false,
       showCreateListing: false,
       email: undefined,
-      searchResults: false
+      searchResults: false,
+      counter: 0
     }
   }
   componentDidMount() {
@@ -138,7 +139,7 @@ class App extends Component {
   }
 
   renderDetails = (routerData) => {
-    return (<Details itemID={routerData.match.params.id} userID={this.state.userID} />)
+    return (<Details itemID={routerData.match.params.id} userID={this.state.userID} counter={this.setUpCounter} />)
   }
 
 //POPUPS
@@ -182,8 +183,12 @@ class App extends Component {
     this.renderListings()
   }
 
+  setUpCounter = () => {
+    this.setState({counter: this.state.counter+1});
+  }
+
   render() {
-    
+    console.log(this.state.counter)
     let createlisting = (()=>{if(this.state.showCreateListing===true){return(<CreateListing userID={this.state.userID} closeCreateListing={this.closeCreateListing}/>)}else{return null}})()
     let signUp = (()=>{if(this.state.showSignUp===true){return(<SignUp closeSignUp={this.closeSignUp}/>)}else{return null}})()
     let signIn = (()=>{if(this.state.showSignIn===true){return(<SignIn setName={this.setName} setUserID={this.setUserID} setEmail={this.setEmail} closeSignIn={this.closeSignIn}/>)}else{return null}})()
@@ -194,7 +199,9 @@ class App extends Component {
           {signUp}
           {signIn}
           {createlisting}
-          <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} renderCreateListing={this.renderCreateListing} name={this.state.name} userID={this.state.userID}/>
+          <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} 
+          renderCreateListing={this.renderCreateListing} name={this.state.name} 
+          userID={this.state.userID} counter={this.state.counter}/>
           {/* <MainNav /> */}
           <div className ="content">
           <Route exact={true} path='/' render={this.renderAllItems} />

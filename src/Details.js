@@ -30,13 +30,13 @@ class Details extends Component {
   }
 
   addToCart = () => {
-    console.log(this.props.userID)
+    //console.log(this.props.userID)
     if (this.props.userID === undefined) {
       this.setState({needToSignIn: true});
     } else {  
       let body = JSON.stringify({userID: this.props.userID , itemID: this.props.itemID})
-      console.log(body)
-      console.log(this.props.userID)
+      //console.log(body)
+      //console.log(this.props.userID)
       fetch('/addToCart', {
         method: 'POST',
         body: body
@@ -45,7 +45,8 @@ class Details extends Component {
         let parsed = JSON.parse(resB);
         let itemIDs = parsed.itemIDs;
         this.setState({cartItemIDs: itemIDs})
-        console.log(this.state.cartItemIDs)
+        this.props.counter();
+        //console.log(this.state.cartItemIDs)
       })
     }
   }
