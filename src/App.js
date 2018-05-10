@@ -75,12 +75,17 @@ class App extends Component {
         <div className="items">
         <Item itemID={itemID} image={this.state.listings[itemID].image} name={this.state.listings[itemID].itemName} 
         description={this.state.listings[itemID].description} price ={this.state.listings[itemID].price} />
+<<<<<<< HEAD
         </div>
       </div>
       )})
       return (<div>{top}{bot}</div>)
      }
   }
+=======
+      </div>)})
+  }}
+>>>>>>> 350938dff737033e2729db562a40724f286f9c56
 
   renderAllItems = () => {
     return (<div className="sideNavContainer"><SideNav setSearchItemIDs={this.setSearchItemIDs}/><div className="allItems">{this.renderListings()}</div></div>)
@@ -90,18 +95,12 @@ class App extends Component {
   //LOW TO HIGH
 
   renderLowToHigh = () => {
-    // newListings.sort(function(obj1, obj2) {
-    //   console.log(newListings[obj1].price)
-    //   return newListings[obj1].price - newListings[obj2].price;
-    // })
 
-    // Object.keys(newListings).sort()
-    
-
+  
     let sortedListingIDs = Object.keys(this.state.listings).sort((key1, key2) => {
        return this.state.listings[key1].price - this.state.listings[key2].price 
      })
-     
+
     return sortedListingIDs.map(itemID =>{
       return (<div className="items">
         <Item itemID={itemID} image={this.state.listings[itemID].image} name={this.state.listings[itemID].itemName} 
@@ -169,7 +168,13 @@ class App extends Component {
           {signIn}
           <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} name={this.state.name} userID={this.state.userID}/>
           {/* <MainNav /> */}
+<<<<<<< HEAD
           <div className ="content">
+=======
+
+          <div className ="content">
+
+>>>>>>> 350938dff737033e2729db562a40724f286f9c56
           <Route exact={true} path='/' render={this.renderAllItems} />
           <Route exact={true} path='/lowtohigh' render={this.renderItemsLowToHigh} />
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
@@ -188,6 +193,5 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;

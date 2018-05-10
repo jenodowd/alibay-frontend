@@ -29,7 +29,11 @@ html, body {
 
 .card {
   display: inline-block;
-  margin: 10px;
+  margin: 20px;
+}
+
+.images {
+  width: 250px;
 }
 
 /* MAIN NAV */
@@ -150,17 +154,18 @@ html, body {
 /* DETAILS */
 .details {
   display: flex;
-  margin-left: 500px;
+  margin-left: 300px;
   margin-top: 100px;
-
 }
-/* .detailImg {
-  display: flex;
+
+.detailDesc {
+  width: 350px;
+  word-wrap: break-word;
 }
 
 .detailTxt {
-  display: flex;
-} */
+  margin: 40px;
+}
 
 
 /* VIEW ACCOUNT */
