@@ -55,9 +55,10 @@ class SignIn extends Component {
     } else
       return (
         <div className = "signUp">
+        <button onClick={this.props.closeSignIn}>close</button>
           <form className ="signUpForm" onSubmit={this.handleLoginSubmit}>
 
-            <button onClick={this.props.closeSignIn}>close</button>
+            
 
             <h1>Login</h1>
 

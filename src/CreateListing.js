@@ -13,7 +13,8 @@ class CreateListing extends Component {
       descriptionInput: undefined,
       imageInput: undefined,
       tagsInput: undefined,
-      submitted: false
+      submitted: false,
+      category : ""
     };
   }
 
@@ -37,6 +38,12 @@ class CreateListing extends Component {
     this.setState({ tagsInput: event.target.value });
   };
 
+  handleCategoryChange = event => {
+    // console.log("fasfa")
+    // console.log(event.target.value)
+    this.setState({ category: event.target.value });
+  };
+
   uploadFile = x => {
     let filename = x.name;
     let fileExtension = filename.split(".").pop();
@@ -57,7 +64,8 @@ class CreateListing extends Component {
       description: this.state.descriptionInput,
       itemName: this.state.nameInput,
       image: this.state.imageInput,
-      tags: this.state.tagsInput
+      tags: this.state.tagsInput,
+      category: this.state.category
     });
 
     fetch("/createListing", { method: "POST", body: bod })
@@ -71,9 +79,9 @@ class CreateListing extends Component {
           priceInput: "",
           descriptionInput: "",
           imageInput: "",
-          tagsInput: ""
+          tagsInput: "",
+          category: ""
         });
-
       });
   };
 
@@ -102,6 +110,16 @@ class CreateListing extends Component {
             onChange={this.handlePriceChange}
             required
           />
+
+          <br />
+          <br />
+
+          <select  value={this.state.category}  name="Category" onChange={this.handleCategoryChange}>
+            <option value="" >Choose Category</option>
+            <option >Home and Garden</option>
+            <option >Fashion</option>
+            <option >Accessories</option>
+          </select>
 
           <br />
           <br />
