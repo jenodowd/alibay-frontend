@@ -17,7 +17,7 @@ import Search from './Search.js';
 
 // let renderAllItems = () => {
 //   return (<div className="sideNavContainer"><SideNav /><div className="allItems">{allItems}</div></div>)
-// }
+// } 
 
 class App extends Component {
   constructor() {
@@ -28,6 +28,7 @@ class App extends Component {
       listings : {},
       showSignUp : false,
       showSignIn : false,
+      showCreateListing: false,
       email: undefined,
       searchResults: false
     }
@@ -58,9 +59,9 @@ class App extends Component {
     return <ViewAccount name={this.state.name} userID={this.state.userID} email={this.state.email}/>
   }
 
-  renderCreateListing = () => {
-    return <CreateListing userID={this.state.userID} />
-   }
+  // renderCreateListing = () => {
+  //   return <CreateListing userID={this.state.userID} />
+  //  }
 
   renderListings = () => {
 
@@ -140,6 +141,8 @@ class App extends Component {
     return (<Details itemID={routerData.match.params.id} userID={this.state.userID} />)
   }
 
+//POPUPS
+
   renderSignUp = () => {
     this.setState({showSignUp: true})
   }
@@ -156,6 +159,16 @@ class App extends Component {
     this.setState({showSignIn: false})
   }
 
+  renderCreateListing = () => {
+    this.setState({showCreateListing: true})
+  }
+
+  closeCreateListing = () => {
+    this.setState({showCreateListing: false})
+  }
+
+//
+
   renderCart = (routerData) => {
     return (<Cart userID={routerData.match.params.userID}/>)
   }
@@ -170,7 +183,8 @@ class App extends Component {
   }
 
   render() {
-
+    
+    let createlisting = (()=>{if(this.state.showCreateListing===true){return(<CreateListing userID={this.state.userID} closeCreateListing={this.closeCreateListing}/>)}else{return null}})()
     let signUp = (()=>{if(this.state.showSignUp===true){return(<SignUp closeSignUp={this.closeSignUp}/>)}else{return null}})()
     let signIn = (()=>{if(this.state.showSignIn===true){return(<SignIn setName={this.setName} setUserID={this.setUserID} setEmail={this.setEmail} closeSignIn={this.closeSignIn}/>)}else{return null}})()
     return (<div>
@@ -179,7 +193,8 @@ class App extends Component {
         <div>
           {signUp}
           {signIn}
-          <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} name={this.state.name} userID={this.state.userID}/>
+          {createlisting}
+          <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} renderCreateListing={this.renderCreateListing} name={this.state.name} userID={this.state.userID}/>
           {/* <MainNav /> */}
           <div className ="content">
           <Route exact={true} path='/' render={this.renderAllItems} />
@@ -188,7 +203,7 @@ class App extends Component {
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
           {/* <Route exact={true} path='/signin' render={this.renderSignIn}/> */}
           <Route exact={true} path='/viewaccount' render={this.renderViewAccount}/>
-          <Route exact={true} path='/createlisting' render={this.renderCreateListing}/>
+          {/* <Route exact={true} path='/createlisting' render={this.renderCreateListing}/> */}
           <Route exact={true} path='/itemsbought' render={this.renderItemsBought}/>
           <Route exact={true} path='/itemssold' render={this.renderItemsSold} />
           <Route exact={true} path='/details/:id' render={this.renderDetails} />

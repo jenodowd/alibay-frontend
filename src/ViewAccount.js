@@ -12,26 +12,17 @@ class ViewAccount extends Component {
     render() {
       return (
         <div>
-        {this.props.name && <div className="viewAccount"></div>}
+        {this.props.name && <div></div>}
         <div className="viewAccount">
-        <div>
-          <h1>Items Bought</h1>
-          <div><Link className="link" to={'/itemsbought'}>See your order history</Link></div>
-        </div>
-        <div>
-          <h1>Items Sold</h1>
-          <div><Link className="link" to={'/itemssold'}>See your sales history </Link></div>
-        </div>
-        </div>
-        <div className="viewAccount">
-        <div><h1>My info</h1>
+        <div><h1>My account </h1>
         <div>Name: {this.props.name}</div>
         <div>Email: {this.props.email}</div>
         <div>Password ******* <button>Change password</button></div>
+        <div><Link className="link" to={'/itemsbought'}>View order history</Link></div>
+        <div><Link className="link" to={'/itemssold'}>View sales history </Link></div>
         </div>
         </div>
-        </div>
-            )
+         </div>   )
           }
         }
 

@@ -21,7 +21,10 @@ class ItemsBought extends Component {
       });
   }
 
+  
+
   setBoughtItems = async itemsBought => {
+    
     let responses = await Promise.all(
       itemsBought.map(itemID => 
         fetch("getItemDetails?itemID=" + itemID, { method: "GET" }).then(res => res.json())
@@ -32,7 +35,11 @@ class ItemsBought extends Component {
   };
 
   displayItemsBought = () => {
-    return this.state.itemsBought.map(item => {
+
+    if (Object.keys(this.state.itemsBought).length === 0) {
+      return (<div>No previous items bought</div>) }
+  
+      return this.state.itemsBought.map(item => {
       return (
         <div className="items">
           <Item itemID={item.itemID}
