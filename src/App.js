@@ -104,7 +104,7 @@ class App extends Component {
         <BrowserRouter>
         <div>
           {signup}
-          <AccountNav renderSignUp={this.renderSignUp} name={this.state.name} />
+          <AccountNav renderSignUp={this.renderSignUp} name={this.state.name} userID={this.state.userID}/>
           <MainNav />
           <Route exact={true} path='/' render={this.renderAllItems} />
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
