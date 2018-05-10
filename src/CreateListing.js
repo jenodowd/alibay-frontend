@@ -89,7 +89,7 @@ class CreateListing extends Component {
     return (
       <div className = "signUp">
         {this.state.submitted ? <h5><button onClick={this.props.closeCreateListing}>close</button>Thank you for the submission!</h5> : null}
- ,
+        <button onClick={this.props.closeCreateListing}>close</button>
         <form className = "signUpForm" onSubmit={this.handleCreateListingSubmit}>
           <input
             className="inputField"
