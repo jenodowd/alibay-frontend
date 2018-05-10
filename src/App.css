@@ -37,10 +37,11 @@ html, body {
 .accountNavUL {
   list-style-type: none;
   text-align: right;
-  margin: 13px;
+  /* margin: 13px; */
   padding: 0;
   font-size: 14px;
-  min-width: 800px;
+  vertical-align: middle;
+  /* min-width: 800px; */
 }
 
 /* .accountNav {
@@ -54,14 +55,17 @@ html, body {
 } */
 
 .accountNav {
-  position: absolute;
-  right: 0;
+  position: relative;
   float: right;
+  vertical-align: middle;
+  margin-top: 10px;
+  /* min-width: 800px; */
 }
 
 .accountNavLI {
   display: inline;
   vertical-align: middle;
+  /* min-width: 800px; */
 } 
 
 /* MAIN NAV */
@@ -74,6 +78,7 @@ html, body {
 .nav{
   display: flex;
   min-width: 800px;
+  width: 100vw;
   height: 50px;
 }
 
@@ -82,17 +87,20 @@ html, body {
   margin: 20px;
   padding: 0;
   font-size: 17px;
+  /* min-width: 800px; */
 }
 
 .mainNavLI {
   display: inline;
   vertical-align: middle;
+  /* min-width: 800px; */
 }
 
 .logo {
   font-size: 20px;
   display: inline;
   vertical-align: middle;
+  /* min-width: 800px; */
 } 
 
 /* SIDE NAV */
