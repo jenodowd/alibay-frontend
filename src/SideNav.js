@@ -11,7 +11,7 @@ class SideNav extends Component {
   render() {
     return (
       <div className="sideNav">
-        <Search />
+        <Search setSearchItemIDs={this.props.setSearchItemIDs}/>
         <ul className="sideNavUL">
           <li className="sideNavTitle">Sort by:</li>
           <li className="sideNavTitle">Price</li>
