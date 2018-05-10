@@ -46,7 +46,9 @@ class SignIn extends Component {
           .then(res => {
             this.props.setCounter(res.itemIDs.length)
           })
-        } else console.log("login failed");
+        } else {
+          this.setState({ loginFailed: true });
+        }
       })
   };
 
