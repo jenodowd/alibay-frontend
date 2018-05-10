@@ -321,11 +321,18 @@ class App extends Component {
   populateHomeCategory = () => {
     fetch('/getItemsFromCategory?category=' + "Home and Garden", { method: 'GET'})
     .then(response => response.text())
-    .then(responseBody=> {
-      let bod = JSON.parse(responseBody);
-      this.setState({homeCategory: bod})
-    })
+    //.then(responseBody => JSON.parse(responseBody))
+    .then(responseBody => console.log(responseBody))
+    // .then(responseBody=> {
+    //   let bod = JSON.parse(responseBody);
+    //   this.setState({homeCategory: bod})
+    //   console.log(this.state.homeCategory)
+    // })
   }
+
+  // renderHomeCategory = () => {
+  //   return this.populateHomeCategory()
+  // }
 
   populateFashionCategory = () => {
     fetch('/getItemsFromCategory?category=' + "Fashion", { method: 'GET'})
@@ -446,6 +453,11 @@ class App extends Component {
                   exact={true}
                   path="/cart/:userID"
                   render={this.renderCart}
+                />
+                <Route
+                  exact={true}
+                  path="/homeandgarden"
+                  render={this.populateHomeCategory}
                 />
               </div>
             </div>
