@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MainNav from './MainNav.js'
 import { Link } from 'react-router-dom';
 import './App.css';
 
@@ -9,6 +10,8 @@ class AccountNav extends Component {
   }
   render() {
     return (
+      <div className = "nav">
+      <MainNav />
       <div className="accountNav">
         <ul className="accountNavUL">
           {this.props.name && <li className="accountNavLI">Welcome {this.props.name} &nbsp; </li>}
@@ -18,6 +21,7 @@ class AccountNav extends Component {
           {this.props.name && <li className="accountNavLI"><button><Link className="link" to={'/createlisting'}>Post Item</Link></button> &nbsp; </li>}
           {this.props.name && <li className="accountNavLI"><button><Link className="link" to={'/cart/'+ this.props.userID}>Shopping Cart</Link></button></li>}
         </ul>
+      </div>
       </div>
           )
         }
