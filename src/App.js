@@ -188,7 +188,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.counter)
     let createlisting = (()=>{if(this.state.showCreateListing===true){return(<CreateListing userID={this.state.userID} closeCreateListing={this.closeCreateListing}/>)}else{return null}})()
     let signUp = (()=>{if(this.state.showSignUp===true){return(<SignUp closeSignUp={this.closeSignUp}/>)}else{return null}})()
     let signIn = (()=>{if(this.state.showSignIn===true){return(<SignIn setName={this.setName} setUserID={this.setUserID} setEmail={this.setEmail} closeSignIn={this.closeSignIn}/>)}else{return null}})()

@@ -12,11 +12,12 @@ class Cart extends Component {
     }
 
     componentDidMount() {
-        fetch('/getCart', {
+        fetch("/getCart?userID=" + this.props.userID, {
             method: 'GET'
         }).then(res=>res.text())
         .then(resB=> {
             let parsed = JSON.parse(resB);
+            console.log(parsed)
             let itemIDs = parsed.itemIDs;
             this.getCartItemDetails(itemIDs)
         })
