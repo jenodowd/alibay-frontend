@@ -28,7 +28,8 @@ class App extends Component {
       listings : {},
       showSignUp : false,
       showSignIn : false,
-      email: undefined
+      email: undefined,
+      searchResults: false
     }
   }
   componentDidMount() {
@@ -66,14 +67,17 @@ class App extends Component {
    }
 
   renderListings = () => {
-    //return (<div>HEY</div>)
-     //console.log(this.state.listings)
+
+     if (Object.keys(this.state.listings).length === 0) {
+       return (<div>No results...please search again</div>)
+      }
+     else {
     return Object.keys(this.state.listings).map(itemID =>{
       return (<div className="items">
         <Item itemID={itemID} image={this.state.listings[itemID].image} name={this.state.listings[itemID].itemName} 
         description={this.state.listings[itemID].description} price ={this.state.listings[itemID].price} />
       </div>)})
-  
+     }
   }
 
   renderAllItems = () => {
@@ -117,7 +121,7 @@ class App extends Component {
   }
 
   setSearchItemIDs = (items) =>{
-    this.setState({listings:items})
+    this.setState({listings:items, searchResults:true})
     this.renderListings()
   }
   render() {
@@ -132,10 +136,7 @@ class App extends Component {
           {signIn}
           <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} name={this.state.name} userID={this.state.userID}/>
           {/* <MainNav /> */}
-<<<<<<< HEAD
           <div className ="content">
-=======
->>>>>>> 742fb5a64906d9516d170e5f1bf67315607c89f1
           <Route exact={true} path='/' render={this.renderAllItems} />
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
           {/* <Route exact={true} path='/signin' render={this.renderSignIn}/> */}
