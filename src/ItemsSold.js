@@ -32,7 +32,6 @@ class ItemsSold extends Component {
   };
 
   displayItemsSold = () => {
- //   console.log(this.state.itemsBought)
     return this.state.itemsSold.map(item => {
       return (
         <div className="items">
@@ -54,6 +53,7 @@ class ItemsSold extends Component {
         {this.props.name && <div className="viewAccount">My Account</div>}
         <div>Items Sold</div>
         <div>{this.displayItemsSold()}</div>
+        <div><Link className="link" to={'/viewaccount'}>Return to your account</Link></div>
       </div>
     );
   }

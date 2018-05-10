@@ -39,6 +39,7 @@ class SignIn extends Component {
           this.setState({ loggedIn: true });
           this.props.setName(responseBody.firstName);
           this.props.setUserID(responseBody.userID);
+          this.props.setEmail(responseBody.email);
         } else console.log("login failed");
       });
   };

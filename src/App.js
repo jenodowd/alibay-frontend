@@ -27,6 +27,7 @@ class App extends Component {
       listings : {},
       showSignUp : false,
       showSignIn : false,
+      email: undefined
     }
   }
   componentDidMount() {
@@ -47,12 +48,16 @@ class App extends Component {
     this.setState({ userID })
   }
 
+  setEmail = (email) =>{
+    this.setState({email})
+  }
+
   // renderSignIn = () => {
   //  return <SignIn setName={this.setName} setUserID={this.setUserID}/>
   // }
   
   renderViewAccount = () =>{
-    return <ViewAccount name={this.state.name} userID={this.state.userID}/>
+    return <ViewAccount name={this.state.name} userID={this.state.userID} email={this.state.email}/>
   }
 
   renderCreateListing = () => {
@@ -109,7 +114,7 @@ class App extends Component {
   render() {
 
     let signUp = (()=>{if(this.state.showSignUp===true){return(<SignUp closeSignUp={this.closeSignUp}/>)}else{return null}})()
-    let signIn = (()=>{if(this.state.showSignIn===true){return(<SignIn setName={this.setName} setUserID={this.setUserID} closeSignIn={this.closeSignIn}/>)}else{return null}})()
+    let signIn = (()=>{if(this.state.showSignIn===true){return(<SignIn setName={this.setName} setUserID={this.setUserID} setEmail={this.setEmail} closeSignIn={this.closeSignIn}/>)}else{return null}})()
     return (<div>
         <div> 
         <BrowserRouter>

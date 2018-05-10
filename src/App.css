@@ -156,3 +156,13 @@ html, body {
 .detailTxt {
   display: flex;
 } */
+
+
+/* VIEW ACCOUNT */
+.viewAccount{
+ display:flex;
+  padding:100px;
+  margin: 10px;
+
+
+}
