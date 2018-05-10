@@ -123,6 +123,7 @@ class App extends Component {
           {signIn}
           <AccountNav renderSignUp={this.renderSignUp} renderSignIn={this.renderSignIn} name={this.state.name} userID={this.state.userID}/>
           {/* <MainNav /> */}
+          <div className ="content">
           <Route exact={true} path='/' render={this.renderAllItems} />
           {/* <Route exact={true} path='/signup' component={SignUp}/> */}
           {/* <Route exact={true} path='/signin' render={this.renderSignIn}/> */}
@@ -132,6 +133,7 @@ class App extends Component {
           <Route exact={true} path='/itemssold' render={this.renderItemsSold} />
           <Route exact={true} path='/details/:id' render={this.renderDetails} />
           <Route exact={true} path='/cart/:userID' render={this.renderCart} />
+          </div>
         </div>
         </BrowserRouter>
       </div>
@@ -139,4 +141,6 @@ class App extends Component {
     );
   }
 }
+
+
 export default App;
