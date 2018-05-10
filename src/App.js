@@ -26,6 +26,9 @@ class App extends Component {
       name: undefined,
       userID: "",
       listings: {},
+      homeCategory: {},
+      fashionCategory: {},
+      accessoriesCategory: {},
       showSignUp: false,
       showSignIn: false,
       showCreateListing: false,
@@ -311,6 +314,39 @@ class App extends Component {
   setCounter = (val) => {
     this.setState({ counter: val });
   };
+
+
+  //POPULATE CATEGORIES:
+
+  populateHomeCategory = () => {
+    fetch('/getItemsFromCategory?category=' + "Home and Garden", { method: 'GET'})
+    .then(response => response.text())
+    .then(responseBody=> {
+      let bod = JSON.parse(responseBody);
+      this.setState({homeCategory: bod})
+    })
+  }
+
+  populateFashionCategory = () => {
+    fetch('/getItemsFromCategory?category=' + "Fashion", { method: 'GET'})
+    .then(response => response.text())
+    .then(responseBody=> {
+      let bod = JSON.parse(responseBody);
+      this.setState({fashionCategory: bod})
+    })
+  }
+
+  populateAccessoriesCategory = () => {
+    fetch('/getItemsFromCategory?category=' + "Accessories", { method: 'GET'})
+    .then(response => response.text())
+    .then(responseBody=> {
+      let bod = JSON.parse(responseBody);
+      this.setState({accessoriesCategory: bod})
+    })
+  }
+
+  //
+
 
   render() {
     let createlisting = (() => {
