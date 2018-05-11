@@ -34,7 +34,8 @@ class App extends Component {
       showCreateListing: false,
       email: undefined,
       searchResults: false,
-      counter: 0
+      // counter: 0,
+      cartItems: [],
     };
   }
   componentDidMount() {
@@ -261,7 +262,8 @@ class App extends Component {
       <Details
         itemID={routerData.match.params.id}
         userID={this.state.userID}
-        counter={this.setUpCounter}
+        setCartItems={this.setCartItems}
+        cartItems={this.state.cartItems}
       />
     );
   };
@@ -295,7 +297,7 @@ class App extends Component {
   //
 
   renderCart = routerData => {
-    return <Cart userID={routerData.match.params.userID} />;
+    return <Cart userID={routerData.match.params.userID} setCartItems={this.setCartItems}/>;
   };
 
   renderSearchItems = () => {
@@ -307,12 +309,16 @@ class App extends Component {
     this.renderListings();
   };
 
-  setUpCounter = () => {
-    this.setState({ counter: this.state.counter + 1 });
-  };
+  // setUpCounter = () => {
+  //   this.setState({ counter: this.state.counter + 1 });
+  // };
 
-  setCounter = (val) => {
-    this.setState({ counter: val });
+  // decrementCounter = () => {
+  //   this.setState({counter: this.state.counter - 1})
+  // }
+
+  setCartItems = (items) => {
+    this.setState({ cartItems: items });
   };
 
 
@@ -384,7 +390,7 @@ class App extends Component {
             setEmail={this.setEmail}
             renderSignIn={this.renderSignIn}
             closeSignIn={this.closeSignIn}
-            setCounter={this.setCounter}
+            setCartItems={this.setCartItems}
           />
         );
       } else {
@@ -405,7 +411,7 @@ class App extends Component {
                 renderCreateListing={this.renderCreateListing}
                 name={this.state.name}
                 userID={this.state.userID}
-                counter={this.state.counter}
+                counter={this.state.cartItems.length}
               />
               <div className="content">
                 <Route exact={true} path="/" render={this.renderAllItems} />
