@@ -51,7 +51,7 @@ class CreateListing extends Component {
     })
       .then(response => response.text())
       .then(response => this.setState({ imageInput: response }))
-      .then(() => console.log(this.state.imageInput));
+      .then(() => this.state.imageInput);
   };
 
   handleCreateListingSubmit = event => {

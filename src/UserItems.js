@@ -33,6 +33,20 @@ class UserItems extends Component {
     this.setState({ userItems: itemObjects });
   };
 
+  deleteListing = e =>{
+    let body = JSON.stringify({
+      itemID: e.target.name,
+      userID: this.props.userID
+    })
+    fetch("/deleteListing",{
+      method: "POST",
+      body:body
+    })
+    .then(res => res.json())
+    .then((responseBody) =>this.setUserItems(responseBody.itemIDs))
+    .then(()=> this.displayUserItems())
+  }
+
   displayUserItems = () => {
 
     if (Object.keys(this.state.userItems).length === 0) {
@@ -48,6 +62,11 @@ class UserItems extends Component {
             description={item.description}
             price={item.price}
           />
+          <button name={item.itemID}
+          className="removeButton"
+          onClick={this.deleteListing}
+          > Delete Item
+          </button>
           </div>
         </div>
       );
