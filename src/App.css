@@ -181,11 +181,15 @@ html, body {
 .viewAccount{
   padding:20px;
   margin: 10px;
-  width:400px;
-  height:400px;}
+flex-wrap: wrap;
+
+
+}
 
 .accountItems{
   display:flex;
+  flex-wrap: wrap;
+
 }
 
 /* POST ITEM */
