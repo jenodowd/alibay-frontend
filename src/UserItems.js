@@ -2,55 +2,56 @@ import React, { Component } from "react";
 import "./App.css";
 import Item from "./Item.js";
 
-class ItemsSold extends Component {
+class UserItems extends Component {
   constructor() {
     super();
-    this.state = {itemsSold:[]};
+
+    this.state = {userItems:[]};
   }
   componentDidMount() {
-    fetch("/getItemsSold?userID=" + this.props.userID, {
+    fetch("/getUserItems?userID=" + this.props.userID, {
       method: "GET"
     })
       .then(response => response.text())
       .then(responseBody => {
         let parsed = JSON.parse(responseBody);
-        if (responseBody.success){
-        let itemsSold = parsed.itemIDs;
-        this.setSoldItems(itemsSold);
+        if (parsed.success){
+        let userItems = parsed.itemIDs;
+        this.setUserItems(userItems);
         }
+      
       });
   }
 
-  setSoldItems = async itemsSold => {
-    console.log(itemsSold)
+  setUserItems = async userItems => {
     let responses = await Promise.all(
-      itemsSold.map(itemID => 
+      userItems.map(itemID => 
         fetch("getItemDetails?itemID=" + itemID, { method: "GET" }).then(res => res.json())
       )
     );
-    let itemObjects = responses.map((res, i) => ({ ...res.details, itemID: itemsSold[i] }));
-    this.setState({ itemsSold: itemObjects });
+    let itemObjects = responses.map((res, i) => ({ ...res.details, itemID: userItems[i] }));
+    this.setState({ userItems: itemObjects });
   };
 
-  displayItemsSold = () => {
+  displayUserItems = () => {
 
-    if (Object.keys(this.state.itemsSold).length === 0) {
-      return (<div>No previous items sold</div>) }
-  
-    return this.state.itemsSold.map(item => {
+    if (Object.keys(this.state.userItems).length === 0) {
+      return (<div>No items currently listed</div>) }
+    else {
+      return this.state.userItems.map(item => {
       return (
         <div className="items">
-        <div className="items">
+          <div className="items">
           <Item itemID={item.itemID}
             image={item.image}
             name={item.itemName}
             description={item.description}
             price={item.price}
           />
-        </div>
+          </div>
         </div>
       );
-    });
+    });}
   };
 
   render() {
@@ -58,11 +59,11 @@ class ItemsSold extends Component {
     return (
       <div>
         {this.props.name && <div className="viewAccount">My Account</div>}
-        <h1>Items Sold</h1>
-        <div className="accountItems">{this.displayItemsSold()}</div>
+        <h1>My Items</h1>
+        <div className="accountItems">{this.displayUserItems()}</div>
       </div>
     );
   }
 }
 
-export default ItemsSold;
+export default UserItems;
