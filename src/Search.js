@@ -46,8 +46,10 @@ render() {
   return (
     <div className="search">
       <form onSubmit={this.handleSearchSubmit}>
+        <div>
         <input className="searchInput" type="text" value={this.state.searchInput} onChange={this.handleSearchChange}></input>
-        <input type="submit"></input>
+        <input className="searchButton" type="submit" value=""></input>
+        </div>
       </form>
       </div>
     )
