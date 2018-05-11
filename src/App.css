@@ -13,7 +13,27 @@ html, body {
 /* ALL FORMS */
 
 .inputField{
-  font-size: 15px
+  font-size: 15px;
+  border: 2px solid black;
+  color: black;
+  height: 25px;
+  width: 220px;
+  padding: 5px;
+}
+
+/* PLACEHOLDER TEXT */
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: black;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: black;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: black;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: black;
 }
 
 /* ITEMS */
@@ -141,12 +161,13 @@ html, body {
 }
 .signUp {
   position: absolute;
-  top: 20%;
-  left: 25%;
+  top: 18%;
+  left: 30%;
   background-color: white;
   height: 500px;
   width: 500px;
-  box-shadow: 2px 5px 8px #888888;
+  /* box-shadow: 2px 5px 8px #888888; */
+  border: 2px solid black;
 }
 
 .signUpForm {
@@ -158,6 +179,51 @@ html, body {
   margin: 20px;
   text-align: center;
   margin-top: 100px;
+}
+
+.closeButton {
+  float: right;
+  margin: 10px;
+  background: none;
+  border: none;
+}
+
+.buttonImg {
+  width: 20px;
+}
+
+.formHeader {
+  font-weight: 200;
+  text-align: center;
+  margin-top: 130px;
+}
+
+.errorMessage {
+  font-weight: 200;
+  text-align: center;
+  margin-top: 150px;
+}
+
+.submitButton {
+  font-weight: bold;
+  background-color: #f6cac9;
+  width: 90px;
+  height: 40px;
+  border: 2px solid black;
+}
+
+.congratsMessage {
+  font-weight: 200;
+  text-align: center;
+  margin-top: 190px;
+}
+
+.shopButton {
+  font-weight: bold;
+  background-color: #f6cac9;
+  width: 150px;
+  height: 40px;
+  border: 2px solid black;
 }
 
 /* DETAILS */
@@ -207,3 +273,4 @@ flex-wrap: wrap;
 }
 
 /*CART BUTTONS*/
+

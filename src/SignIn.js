@@ -77,7 +77,7 @@ class SignIn extends Component {
         <br />
         <br />
 
-        <input type="submit" />
+        <input className = "submitButton" type="submit" value="SUBMIT"/>
       </form>
     );
 
@@ -88,8 +88,11 @@ class SignIn extends Component {
         <div>
         <div className="signUpBack" onClick={this.props.closeSignIn} />
         <div className="signUp">
-          <button onClick={this.props.closeSignIn}>close</button>
-          <div className="signUpForm">You're logged in!</div>
+        <button className="closeButton" onClick={this.props.closeSignIn}><img className="buttonImg" src = "./x.png" /></button>
+          <div className="signUpForm">
+          <p className = "congratsMessage">You're logged in!</p>
+          <button className = "shopButton" onClick={this.props.closeSignIn}>START SHOPPING</button>
+          </div>
         </div>
         </div>
       );
@@ -100,8 +103,8 @@ class SignIn extends Component {
         <div>
         <div className="signUpBack" onClick={this.props.closeSignIn} />
         <div className="signUp">
-          <button onClick={this.props.closeSignIn}>close</button>
-          Something went wrong!
+        <button className="closeButton" onClick={this.props.closeSignIn}><img className="buttonImg" src = "./x.png" /></button>
+          <p className = "errorMessage">Uh oh, try again!</p>
           {loginForm}
         </div>
         </div>
@@ -111,8 +114,8 @@ class SignIn extends Component {
         <div>
           <div className="signUpBack" onClick={this.props.closeSignIn} />
           <div className="signUp">
-            <button className="closeButton" onClick={this.props.closeSignIn}>close</button>
-            <h1>Login</h1>
+            <button className="closeButton" onClick={this.props.closeSignIn}><img className="buttonImg" src = "./x.png" /></button>
+            <h1 className = "formHeader">Login</h1>
             {loginForm}
           </div>
         </div>
