@@ -22,6 +22,7 @@ class UserItems extends Component {
       
       });
   }
+  
 
   setUserItems = async userItems => {
     let responses = await Promise.all(
@@ -32,6 +33,23 @@ class UserItems extends Component {
     let itemObjects = responses.map((res, i) => ({ ...res.details, itemID: userItems[i] }));
     this.setState({ userItems: itemObjects });
   };
+
+  deleteListing = e =>{
+    let body = JSON.stringify({
+      itemID: e.target.name,
+      userID: this.props.userID
+    })
+    fetch("/deleteListing",{
+      method: "POST",
+      body:body
+    })
+    .then(res => res.json())
+    .then((responseBody) =>{
+     console.log(responseBody)
+      this.setUserItems(responseBody.itemIDs)
+    })
+    .then(()=> this.componentDidMount())
+  }
 
   displayUserItems = () => {
 
@@ -48,6 +66,11 @@ class UserItems extends Component {
             description={item.description}
             price={item.price}
           />
+          <button name={item.itemID}
+          className="removeButton"
+          onClick={this.deleteListing}
+          > Delete Item
+          </button>
           </div>
         </div>
       );
