@@ -94,6 +94,7 @@ class Cart extends Component {
               Return to your account
             </Link>
           </button>
+          <div id="paypal-button"></div>
         </div>
       </div>
     );

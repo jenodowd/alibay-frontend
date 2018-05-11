@@ -14,11 +14,13 @@ import ItemsBought from "./ItemsBought";
 import ItemsSold from "./ItemsSold";
 import Cart from "./Cart.js";
 import Search from "./Search.js";
+<<<<<<< HEAD
 import UserItems from "./UserItems.js";
+=======
+ 
 
-// let renderAllItems = () => {
-//   return (<div className="sideNavContainer"><SideNav /><div className="allItems">{allItems}</div></div>)
-// }
+>>>>>>> 9f70bdb6703830e9aafe73a0ea9d4367f8927caf
+
 
 class App extends Component {
   constructor() {
@@ -36,7 +38,7 @@ class App extends Component {
       email: undefined,
       searchResults: false,
       // counter: 0,
-      cartItems: [],
+      cartItems: []
     };
   }
   componentDidMount() {
@@ -71,10 +73,6 @@ class App extends Component {
       />
     );
   };
-
-  // renderCreateListing = () => {
-  //   return <CreateListing userID={this.state.userID} />
-  //  }
 
   renderListings = () => {
     if (Object.keys(this.state.listings).length === 0) {
@@ -118,7 +116,6 @@ class App extends Component {
   };
 
   //RENDER BY PRICE
-  //LOW TO HIGH
 
   renderLowToHigh = () => {
     let sortedListingIDs = Object.keys(this.state.listings).sort(
@@ -225,17 +222,17 @@ class App extends Component {
     let sortedListingIDs = Object.keys(this.state.listings).reverse();
 
     return sortedListingIDs.map(itemID => {
-        return (
-          <div className="items">
-            <Item
-              itemID={itemID}
-              image={this.state.listings[itemID].image}
-              name={this.state.listings[itemID].itemName}
-              description={this.state.listings[itemID].description}
-              price={this.state.listings[itemID].price}
-            />
-          </div>
-        );
+      return (
+        <div className="items">
+          <Item
+            itemID={itemID}
+            image={this.state.listings[itemID].image}
+            name={this.state.listings[itemID].itemName}
+            description={this.state.listings[itemID].description}
+            price={this.state.listings[itemID].price}
+          />
+        </div>
+      );
     });
   };
 
@@ -302,7 +299,12 @@ class App extends Component {
   //
 
   renderCart = routerData => {
-    return <Cart userID={routerData.match.params.userID} setCartItems={this.setCartItems}/>;
+    return (
+      <Cart
+        userID={routerData.match.params.userID}
+        setCartItems={this.setCartItems}
+      />
+    );
   };
 
   renderSearchItems = () => {
@@ -322,10 +324,9 @@ class App extends Component {
   //   this.setState({counter: this.state.counter - 1})
   // }
 
-  setCartItems = (items) => {
+  setCartItems = items => {
     this.setState({ cartItems: items });
   };
-
 
   //POPULATE CATEGORIES:
 
@@ -391,7 +392,6 @@ class App extends Component {
 
   //
 
-
   renderAccessories = () => {
     let sortedListingIDs = Object.keys(this.state.listings);
 
@@ -424,6 +424,41 @@ class App extends Component {
   //
 
   render() {
+    window.paypal.Button.render({
+
+      env: /*'production', // Or */'sandbox',
+
+      client: {
+          sandbox:    'AUd8sqBl5MJa4CHKQOjvkxQWN06fIRRPFO11uVRvTauWae6TSP4w2ERfDhUa_KUJmPaqGLF48zIDrbBZ',
+          //production: 'xxxxxxxxx'
+      },
+
+      commit: true, // Show a 'Pay Now' button
+
+      payment: function(data, actions) {
+          return actions.payment.create({
+              payment: {
+                  transactions: [
+                      {
+                          amount: { total: '1.00', currency: 'USD' }
+                      }
+                  ]
+              }
+          });
+      },
+
+      onAuthorize: function(data, actions) {
+          return actions.payment.execute().then(function(payment) {
+
+              // The payment is complete!
+              // You can now show a confirmation message to the customer
+          });
+      }
+
+  }, '#paypal-button');
+
+
+
     let createlisting = (() => {
       if (this.state.showCreateListing === true) {
         return (
@@ -536,12 +571,16 @@ class App extends Component {
                   exact={true}
                   path="/accessories"
                   render={this.renderItemsAccessories}
+<<<<<<< HEAD
                 />
                 <Route
                   exact={true}
                   path='/userItems'
                   render={this.renderUserItems}
                   />
+=======
+                />  
+>>>>>>> 9f70bdb6703830e9aafe73a0ea9d4367f8927caf
               </div>
             </div>
           </BrowserRouter>

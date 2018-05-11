@@ -31,123 +31,92 @@ class SignIn extends Component {
     fetch("/login", { method: "POST", body: bod })
       .then(response => response.text())
       .then(responseBody => JSON.parse(responseBody))
-      //.then(responseBody => console.log(responseBody))
-      //.then(responseBody => console.log(responseBody.firstName))
       .then(responseBody => {
         if (responseBody.success) {
-          //console.log("login successful")
           this.setState({ loggedIn: true });
           this.props.setName(responseBody.firstName);
           this.props.setUserID(responseBody.userID);
           this.props.setEmail(responseBody.email);
-          fetch('/getCart?userID=' + responseBody.userID)
-          .then(res=>res.json())
-          .then(res => {
-            this.props.setCartItems(res.itemIDs)
-          })
+          fetch("/getCart?userID=" + responseBody.userID)
+            .then(res => res.json())
+            .then(res => {
+              this.props.setCartItems(res.itemIDs);
+            });
         } else {
           this.setState({ loginFailed: true });
         }
-      })
+      });
   };
 
-  handleLoginFail = () => {
-    //this.props.closeSignIn
-    //this.props.renderSignIn
-  };
 
   render() {
-    //LOGIN IN A VARIABLE
+    //LOGIN IN VARIABLE
+
     let loginForm = (
-      <div>
-      <div className="signUpBack" onClick={this.props.closeSignIn}>
-      </div>
-      <div className="signUp">
-        <button onClick={this.props.closeSignIn}>close</button>
-        <form className="signUpForm" onSubmit={this.handleLoginSubmit}>
-          <h1>Login</h1>
 
-          <input
-            className="inputField"
-            placeholder="Email"
-            type="text"
-            value={this.emailInput}
-            onChange={this.handleEmailChange}
-          />
+      <form className="signUpForm" onSubmit={this.handleLoginSubmit}>
+        <input
+          className="inputField"
+          placeholder="Email"
+          type="text"
+          value={this.emailInput}
+          onChange={this.handleEmailChange}
+        />
 
-          <br />
-          <br />
+        <br />
+        <br />
 
-          <input
-            className="inputField"
-            placeholder="Password"
-            type="password"
-            value={this.passwordInput}
-            onChange={this.handlePasswordChange}
-          />
+        <input
+          className="inputField"
+          placeholder="Password"
+          type="password"
+          value={this.passwordInput}
+          onChange={this.handlePasswordChange}
+        />
 
-          <br />
-          <br />
+        <br />
+        <br />
 
-          <input type="submit" />
-        </form>
-      </div>
-      </div>
+        <input type="submit" />
+      </form>
     );
+
     //
 
     if (this.state.loggedIn === true) {
       return (
+        <div>
+        <div className="signUpBack" onClick={this.props.closeSignIn} />
         <div className="signUp">
           <button onClick={this.props.closeSignIn}>close</button>
           <div className="signUpForm">You're logged in!</div>
+        </div>
         </div>
       );
     }
 
     if (this.state.loginFailed === true) {
       return (
+        <div>
+        <div className="signUpBack" onClick={this.props.closeSignIn} />
         <div className="signUp">
           <button onClick={this.props.closeSignIn}>close</button>
           Something went wrong!
-          {/* {loginForm} */}
-          {/* <button onClick={this.props.handleLoginFail}>Try Again?</button> */}
+          {loginForm}
+        </div>
         </div>
       );
     } else {
-      return loginForm;
-
-      // <div className = "signUp">
-      // <button onClick={this.props.closeSignIn}>close</button>
-      //   <form className ="signUpForm" onSubmit={this.handleLoginSubmit}>
-
-      //     <h1>Login</h1>
-
-      //     <input
-      //       className="inputField"
-      //       placeholder="Email"
-      //       type="text"
-      //       value={this.emailInput}
-      //       onChange={this.handleEmailChange}
-      //     />
-
-      //     <br />
-      //     <br />
-
-      //     <input
-      //       className="inputField"
-      //       placeholder="Password"
-      //       type="password"
-      //       value={this.passwordInput}
-      //       onChange={this.handlePasswordChange}
-      //     />
-
-      //     <br />
-      //     <br />
-
-      //     <input type="submit" />
-      //   </form>
-      // </div>
+      return (
+        <div>
+          <div className="signUpBack" onClick={this.props.closeSignIn} />
+          <div className="signUp">
+            <button className="closeButton" onClick={this.props.closeSignIn}>close</button>
+            <h1>Login</h1>
+            {loginForm}
+          </div>
+        </div>
+      );
     }
   }
 }

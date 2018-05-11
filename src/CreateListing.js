@@ -39,8 +39,6 @@ class CreateListing extends Component {
   };
 
   handleCategoryChange = event => {
-    // console.log("fasfa")
-    // console.log(event.target.value)
     this.setState({ category: event.target.value });
   };
 
@@ -87,6 +85,8 @@ class CreateListing extends Component {
 
   render() {
     return (
+      <div>
+      <div className="signUpBack" onClick={this.props.closeCreateListing} />
       <div className = "signUp">
         {this.state.submitted ? <h5><button onClick={this.props.closeCreateListing}>close</button>Thank you for the submission!</h5> : null}
         <button onClick={this.props.closeCreateListing}>close</button>
@@ -161,6 +161,7 @@ class CreateListing extends Component {
 
           <input type="submit" />
         </form>
+      </div>
       </div>
     );
   }
