@@ -324,42 +324,99 @@ class App extends Component {
 
   //POPULATE CATEGORIES:
 
-  populateHomeCategory = () => {
-    fetch('/getItemsFromCategory?category=' + "Home and Garden", { method: 'GET'})
-    .then(response => response.text())
-    //.then(responseBody => JSON.parse(responseBody))
-    .then(responseBody => console.log(responseBody))
-    // .then(responseBody=> {
-    //   let bod = JSON.parse(responseBody);
-    //   this.setState({homeCategory: bod})
-    //   console.log(this.state.homeCategory)
-    // })
-  }
+  renderHome = () => {
+    let sortedListingIDs = Object.keys(this.state.listings);
 
-  // renderHomeCategory = () => {
-  //   return this.populateHomeCategory()
-  // }
+    return sortedListingIDs.map(itemID => {
+      if (this.state.listings[itemID].category === "Home and Garden") {
+        return (
+          <div className="items">
+            <Item
+              itemID={itemID}
+              image={this.state.listings[itemID].image}
+              name={this.state.listings[itemID].itemName}
+              description={this.state.listings[itemID].description}
+              price={this.state.listings[itemID].price}
+            />
+          </div>
+        );
+      }
+    });
+  };
 
-  populateFashionCategory = () => {
-    fetch('/getItemsFromCategory?category=' + "Fashion", { method: 'GET'})
-    .then(response => response.text())
-    .then(responseBody=> {
-      let bod = JSON.parse(responseBody);
-      this.setState({fashionCategory: bod})
-    })
-  }
-
-  populateAccessoriesCategory = () => {
-    fetch('/getItemsFromCategory?category=' + "Accessories", { method: 'GET'})
-    .then(response => response.text())
-    .then(responseBody=> {
-      let bod = JSON.parse(responseBody);
-      this.setState({accessoriesCategory: bod})
-    })
-  }
+  renderItemsHome = () => {
+    return (
+      <div className="sideNavContainer">
+        <SideNav setSearchItemIDs={this.setSearchItemIDs} />
+        <div className="allItems">{this.renderHome()}</div>
+      </div>
+    );
+  };
 
   //
 
+  renderFashion = () => {
+    let sortedListingIDs = Object.keys(this.state.listings);
+
+    return sortedListingIDs.map(itemID => {
+      if (this.state.listings[itemID].category === "Fashion") {
+        return (
+          <div className="items">
+            <Item
+              itemID={itemID}
+              image={this.state.listings[itemID].image}
+              name={this.state.listings[itemID].itemName}
+              description={this.state.listings[itemID].description}
+              price={this.state.listings[itemID].price}
+            />
+          </div>
+        );
+      }
+    });
+  };
+
+  renderItemsFashion = () => {
+    return (
+      <div className="sideNavContainer">
+        <SideNav setSearchItemIDs={this.setSearchItemIDs} />
+        <div className="allItems">{this.renderFashion()}</div>
+      </div>
+    );
+  };
+
+  //
+
+
+  renderAccessories = () => {
+    let sortedListingIDs = Object.keys(this.state.listings);
+
+    return sortedListingIDs.map(itemID => {
+      if (this.state.listings[itemID].category === "Accessories") {
+        return (
+          <div className="items">
+            <Item
+              itemID={itemID}
+              image={this.state.listings[itemID].image}
+              name={this.state.listings[itemID].itemName}
+              description={this.state.listings[itemID].description}
+              price={this.state.listings[itemID].price}
+            />
+          </div>
+        );
+      }
+    });
+  };
+
+  renderItemsAccessories = () => {
+    return (
+      <div className="sideNavContainer">
+        <SideNav setSearchItemIDs={this.setSearchItemIDs} />
+        <div className="allItems">{this.renderAccessories()}</div>
+      </div>
+    );
+  };
+
+  //
 
   render() {
     let createlisting = (() => {
@@ -463,7 +520,17 @@ class App extends Component {
                 <Route
                   exact={true}
                   path="/homeandgarden"
-                  render={this.populateHomeCategory}
+                  render={this.renderItemsHome}
+                />
+                <Route
+                  exact={true}
+                  path="/fashion"
+                  render={this.renderItemsFashion}
+                />
+                <Route
+                  exact={true}
+                  path="/accessories"
+                  render={this.renderItemsAccessories}
                 />
               </div>
             </div>
