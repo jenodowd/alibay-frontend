@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ItemsBought from './ItemsBought';
 import ItemsSold from './ItemsSold';
+import UserItems from './UserItems';
 import './App.css';
 
 
@@ -24,7 +25,7 @@ class ViewAccount extends Component {
         <div>Password ******* <button>Change password</button></div>
         </div>
         <div>
-        <div><h1>My Items</h1></div>
+        <div><UserItems userID={this.props.userID}/></div>
         <div><ItemsBought userID={this.props.userID} /></div>
         <div><ItemsSold userID={this.props.userID} /></div>
          </div>

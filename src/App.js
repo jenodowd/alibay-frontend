@@ -14,8 +14,7 @@ import ItemsBought from "./ItemsBought";
 import ItemsSold from "./ItemsSold";
 import Cart from "./Cart.js";
 import Search from "./Search.js";
- 
-
+import UserItems from "./UserItems.js";
 
 
 class App extends Component {
@@ -282,6 +281,10 @@ class App extends Component {
   renderItemsSold = () => {
     return <ItemsSold userID={this.state.userID} />;
   };
+
+  renderUserItems = () => {
+    return <UserItems userID={this.state.userID} />
+  }
 
   renderDetails = routerData => {
     return (
@@ -560,7 +563,12 @@ class App extends Component {
                   exact={true}
                   path="/accessories"
                   render={this.renderItemsAccessories}
-                />  
+                />
+                <Route
+                  exact={true}
+                  path='/userItems'
+                  render={this.renderUserItems}
+                  />
               </div>
             </div>
           </BrowserRouter>
