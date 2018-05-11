@@ -173,6 +173,7 @@ option {
   display: inline;
   vertical-align: middle;
   margin: 0;
+  font-weight: bold
 }
 
 .logo {
@@ -530,3 +531,28 @@ border:none
   height:20px;
 }
 
+<<<<<<< HEAD
+=======
+.price {
+  font-weight: bold;
+}
+
+.password {
+  font-weight: bold;
+  background-color: #d6f2ea;
+  text-align: left;
+  width: 185px;
+  height: 30px;
+  border: 2px solid black;
+  margin-top: 5px
+}
+.deleteButton {
+  font-weight: bold;
+  background-color:#ECE0EE;
+  text-align: left;
+  width: 110px;
+  height: 30px;
+  border: 2px solid black;
+  margin-top: 5px
+}
+>>>>>>> 29cef70bbe6e8f6644d4fe9f661caaa189b0425c
