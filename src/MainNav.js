@@ -7,7 +7,7 @@ class MainNav extends Component {
     return (
       <div className='mainNav'>
         <ul className="mainNavUL">
-          <li className="logo"><Link className="link" to={'/'}> LOGO </Link> &nbsp; </li> 
+          <li className="logo"><Link className="link" to={'/'}><img className="logoImage" alt="" src = "./logo.png" /></Link> &nbsp; </li> 
           <li className="mainNavLI"><Link className="link" to={'/homeandgarden'}> Home &amp; Garden </Link> &nbsp; &nbsp; </li> 
           <li className="mainNavLI"><Link className="link" to={'/fashion'}> Fashion </Link> &nbsp; &nbsp; </li> 
           <li className="mainNavLI"><Link className="link" to={'/accessories'}> Accessories </Link></li> 

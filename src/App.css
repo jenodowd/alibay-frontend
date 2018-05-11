@@ -19,6 +19,7 @@ html, body {
   height: 25px;
   width: 220px;
   padding: 5px;
+  padding-left: 10px;
 }
 
 /* PLACEHOLDER TEXT */
@@ -64,7 +65,7 @@ html, body {
   display: flex;
   min-width: 900px;
   width: 100vw;
-  height: 65px;
+  height: 80px;
   background-color: white;
   border-bottom: 2px solid black;
 }
@@ -79,13 +80,20 @@ html, body {
 .mainNavLI {
   display: inline;
   vertical-align: middle;
+  margin: 0;
 }
 
 .logo {
-  font-size: 20px;
   display: inline;
-  vertical-align: middle;
 } 
+
+.logoImage {
+  width: 160px;
+  vertical-align: middle;
+  margin: 0;
+  margin-right: 20px;
+  padding: 0;
+}
 
 /* ACCOUNT NAV */
 
@@ -95,7 +103,7 @@ html, body {
   /* position: absolute;
   right: 0; */
   vertical-align: middle;
-  margin-top: 5px;
+  margin-top: 12px;
   margin-right: 20px;
 }
 
@@ -157,8 +165,8 @@ html, body {
   height: 100%;
   width: 100%;
   opacity: 0;
-
 }
+
 .signUp {
   position: absolute;
   top: 18%;
@@ -179,6 +187,12 @@ html, body {
   margin: 20px;
   text-align: center;
   margin-top: 100px;
+}
+
+.signUpHeader {
+  font-weight: 200;
+  text-align: center;
+  margin-top: 55px;
 }
 
 .closeButton {
@@ -269,7 +283,7 @@ flex-wrap: wrap;
 }
 
 .content {
-  margin-top: 90px;
+  margin-top: 100px;
 }
 
 /*CART PG BUTTONS*/

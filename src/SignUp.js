@@ -69,9 +69,10 @@ class SignUp extends Component {
         <div>
         <div className="signUpBack" onClick={this.props.closeSignUp} />
         <div className="signUp">
-          <div className="signUpThankYou">
-            <div> thanks for signing up </div>
-            <button onClick={this.props.closeSignUp}>close</button>
+          <button className="closeButton" onClick={this.props.closeSignUp}><img className="buttonImg" alt="" src = "../x.png" /></button>
+          <div className="signUpForm">
+            <p className = "congratsMessage"> Thanks for signing up! </p>
+            <button className = "shopButton" onClick={this.props.closeSignUp}>START SHOPPING</button>
           </div>
         </div>
         </div>
@@ -83,9 +84,10 @@ class SignUp extends Component {
         <div>
         <div className="signUpBack" onClick={this.props.closeSignUp} />
         <div className="signUp">
-          <div className="signUpThankYou">
-            <div> something went wrong </div>
-            <button onClick={this.props.closeSignUp}>close</button>
+          <button className="closeButton" onClick={this.props.closeSignUp}><img className="buttonImg" alt=""  src = "../x.png" /></button>
+          <div className="signUpForm">
+            <p className = "congratsMessage"> This account already exists! </p>
+            <button className = "submitButton" onClick={this.props.closeSignUp}>CLOSE</button>
           </div>
         </div>
         </div>
@@ -95,10 +97,10 @@ class SignUp extends Component {
         <div>
         <div className="signUpBack" onClick={this.props.closeSignUp} />
         <div className="signUp">
-          <button onClick={this.props.closeSignUp}>close</button>
+          <button className="closeButton" onClick={this.props.closeSignUp}><img className="buttonImg" alt=""  src = "../x.png" /></button>
 
           <form className="signUpForm" onSubmit={this.handleSignUpSubmit}>
-            <h1>Sign Up</h1>
+            <h1 className = "signUpHeader">Sign Up</h1>
 
             <input
               className="inputField"
@@ -155,7 +157,7 @@ class SignUp extends Component {
             <br />
             <br />
 
-            <input type="submit" />
+            <input className = "submitButton" type="submit" value="SUBMIT"/>
           </form>
         </div>
         </div>
