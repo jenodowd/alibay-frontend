@@ -45,7 +45,7 @@ class Details extends Component {
         let parsed = JSON.parse(resB);
         let itemIDs = parsed.itemIDs;
         this.setState({cartItemIDs: itemIDs})
-        this.props.counter();
+        this.props.setCartItems(itemIDs);
         //console.log(this.state.cartItemIDs)
       })
     }
@@ -60,7 +60,8 @@ class Details extends Component {
           <div className="detailDesc">{this.state.description}</div>
           <h4>${this.state.price}</h4>
           {this.state.needToSignIn? <div>Please create an account and sign in</div>: null}
-          <button onClick={this.addToCart}>Add to cart</button>
+          {/* //<button onClick={this.addToCart}>Add to cart</button> */}
+          {this.props.cartItems.includes(this.props.itemID)? <h5>Added to cart</h5>: <button onClick={this.addToCart}>Add to cart</button>}
           </div>
       </div>
           )

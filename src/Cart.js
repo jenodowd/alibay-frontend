@@ -45,7 +45,7 @@ class Cart extends Component {
   };
 
   removeCart = e => {
-    console.log(e.target.name);
+    //console.log(e.target.name);
     let body = JSON.stringify({
       itemID: e.target.name,
       userID: this.props.userID
@@ -54,13 +54,13 @@ class Cart extends Component {
       method: "POST",
       body: body
     })
-      .then(res => res.text())
-      .then(e => console.log(e))
-      .then(this.getAllItems())
+      .then(res => res.json())
+      .then((res) => this.props.setCartItems(res.itemIDs))
+      .then(() => this.getAllItems())
   };
 
   renderItems = () => {
-    return this.state.itemIDs.map(item => {
+    return this.state.itemIDs.map((item) => {
       console.log(item);
       return (
         <div className="items">

@@ -43,7 +43,7 @@ class SignIn extends Component {
           fetch('/getCart?userID=' + responseBody.userID)
           .then(res=>res.json())
           .then(res => {
-            this.props.setCounter(res.itemIDs.length)
+            this.props.setCartItems(res.itemIDs)
           })
         } else {
           this.setState({ loginFailed: true });
