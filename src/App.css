@@ -23,7 +23,18 @@ button {
   border: none;
   font-size: 14px;
   font-weight: bold;
+  /* margin-top: 5px; */
+  /* vertical-align: middle; */
+  margin-top: 9px;
+  display: inline-block;
 }
+
+/* .orClass {
+  margin-top: 20px;
+  padding-top: 10px;
+  vertical-align: middle;
+} */
+
 /* ALL FORMS */
 
 .inputField{
@@ -73,10 +84,25 @@ select {
   font-size: 15px;
   border: 2px solid black;
   color: black;
+  background-color: #fdfcd3;
   height: 25px;
   width: 180px;
   padding: 5px;
   padding-left: 10px;
+  outline: 0; 
+}
+
+.searchButton {
+  position: absolute;
+  left: 180px;
+  width: 30px;
+  margin-top: 4px;
+  height: 30px;
+  background-image: url('/search.png');
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-color: #fdfcd3;
+  border: none;
   outline: 0; 
 }
 
@@ -161,7 +187,7 @@ select {
   /* position: absolute;
   right: 0; */
   vertical-align: middle;
-  margin-top: 12px;
+  margin-top: 5px;
   margin-right: 20px;
 }
 
@@ -178,11 +204,21 @@ select {
   vertical-align: middle;
 } 
 
+.accNavLI {
+  display: inline;
+  vertical-align: middle;
+} 
+.accNavLILine {
+  display: inline;
+  vertical-align: middle;
+  font-weight: 200
+} 
+
 /* SIDE NAV */
 
 .sideNav {
   line-height: 25px;
-  margin-top: 10px;
+  margin-top: 20px;
   min-width: 210px;
 }
 
@@ -362,7 +398,7 @@ flex-wrap: wrap;
   font-weight: bold;
   background-color: #d6f2ea;
   width: 90px;
-  height: 30px;
+  height: 40px;
   border: 2px solid black;
 }
 
