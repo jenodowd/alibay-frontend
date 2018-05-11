@@ -14,7 +14,7 @@ class CreateListing extends Component {
       imageInput: undefined,
       tagsInput: undefined,
       submitted: false,
-      category : ""
+      category: ""
     };
   }
 
@@ -86,82 +86,94 @@ class CreateListing extends Component {
   render() {
     return (
       <div>
-      <div className="signUpBack" onClick={this.props.closeCreateListing} />
-      <div className = "signUp">
-        {this.state.submitted ? <h5><button onClick={this.props.closeCreateListing}>close</button>Thank you for the submission!</h5> : null}
-        <button onClick={this.props.closeCreateListing}>close</button>
-        <form className = "signUpForm" onSubmit={this.handleCreateListingSubmit}>
-          <h1>Create Listing</h1>
-          <input
-            className="inputField"
-            placeholder="Name"
-            type="text"
-            value={this.state.nameInput}
-            onChange={this.handleNameChange}
-            required
-          />
+        <div className="signUpBack" onClick={this.props.closeCreateListing} />
+        <div className="signUp">
+          {this.state.submitted ? (
+            <div>
+              <button className="closeButton" onClick={this.props.closeCreateListing}><img className="buttonImg" alt="" src = "../x.png" /></button>
+              <p>Thank you for the submission!</p>
+            </div>
+          ) : null}
+          <button className="closeButton" onClick={this.props.closeCreateListing}><img className="buttonImg" alt="" src = "../x.png" /></button>
+          <form
+            className="signUpForm"
+            onSubmit={this.handleCreateListingSubmit}
+          >
+            <h1 className = "postHeader">Create Listing</h1>
+            <input
+              className="inputField"
+              placeholder="Name"
+              type="text"
+              value={this.state.nameInput}
+              onChange={this.handleNameChange}
+              required
+            />
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          <input
-            className="inputField"
-            placeholder="Price"
-            type="text"
-            value={this.state.priceInput}
-            onChange={this.handlePriceChange}
-            required
-          />
+            <input
+              className="inputField"
+              placeholder="Price"
+              type="text"
+              value={this.state.priceInput}
+              onChange={this.handlePriceChange}
+              required
+            />
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          <select  value={this.state.category}  name="Category" onChange={this.handleCategoryChange}>
-            <option value="" >Choose Category</option>
-            <option >Home and Garden</option>
-            <option >Fashion</option>
-            <option >Accessories</option>
-          </select>
+            <select
+              value={this.state.category}
+              name="Category"
+              onChange={this.handleCategoryChange}
+            >
+              <option value="">Choose Category</option>
+              <option>Home and Garden</option>
+              <option>Fashion</option>
+              <option>Accessories</option>
+            </select>
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          <textarea
-            className="inputField"
-            placeholder="Description"
-            type="text"
-            value={this.state.descriptionInput}
-            onChange={this.handleDecriptionChange}
-            required
-          />
+            <textarea
+              className="areaField"
+              placeholder="Description"
+              type="text"
+              value={this.state.descriptionInput}
+              onChange={this.handleDecriptionChange}
+              required
+            />
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          <textarea
-            className="inputField"
-            placeholder="Tags eg: vintage, sweater, wool"
-            value={this.state.tagsInput}
-            onChange={this.handleTagsChange}
-            required
-          />
+            <textarea
+              className="areaField"
+              placeholder="Tags eg: vintage, sweater, wool"
+              value={this.state.tagsInput}
+              onChange={this.handleTagsChange}
+              required
+            />
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          <input
-            type="file"
-            id="input"
-            onChange={e => this.uploadFile(e.target.files[0])}
-            required
-          />
+            <input
+              type="file"
+              id="input"
+              onChange={e => this.uploadFile(e.target.files[0])}
+              required
+            />
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          <input type="submit" />
-        </form>
-      </div>
+            <input className = "submitButton" type="submit" />
+          </form>
+        </div>
       </div>
     );
   }
