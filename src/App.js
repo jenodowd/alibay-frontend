@@ -18,10 +18,6 @@ import Search from "./Search.js";
 
 
 
-// let renderAllItems = () => {
-//   return (<div className="sideNavContainer"><SideNav /><div className="allItems">{allItems}</div></div>)
-// }
-
 class App extends Component {
   constructor() {
     super();
@@ -38,7 +34,7 @@ class App extends Component {
       email: undefined,
       searchResults: false,
       // counter: 0,
-      cartItems: [],
+      cartItems: []
     };
   }
   componentDidMount() {
@@ -73,10 +69,6 @@ class App extends Component {
       />
     );
   };
-
-  // renderCreateListing = () => {
-  //   return <CreateListing userID={this.state.userID} />
-  //  }
 
   renderListings = () => {
     if (Object.keys(this.state.listings).length === 0) {
@@ -120,7 +112,6 @@ class App extends Component {
   };
 
   //RENDER BY PRICE
-  //LOW TO HIGH
 
   renderLowToHigh = () => {
     let sortedListingIDs = Object.keys(this.state.listings).sort(
@@ -227,17 +218,17 @@ class App extends Component {
     let sortedListingIDs = Object.keys(this.state.listings).reverse();
 
     return sortedListingIDs.map(itemID => {
-        return (
-          <div className="items">
-            <Item
-              itemID={itemID}
-              image={this.state.listings[itemID].image}
-              name={this.state.listings[itemID].itemName}
-              description={this.state.listings[itemID].description}
-              price={this.state.listings[itemID].price}
-            />
-          </div>
-        );
+      return (
+        <div className="items">
+          <Item
+            itemID={itemID}
+            image={this.state.listings[itemID].image}
+            name={this.state.listings[itemID].itemName}
+            description={this.state.listings[itemID].description}
+            price={this.state.listings[itemID].price}
+          />
+        </div>
+      );
     });
   };
 
@@ -300,7 +291,12 @@ class App extends Component {
   //
 
   renderCart = routerData => {
-    return <Cart userID={routerData.match.params.userID} setCartItems={this.setCartItems}/>;
+    return (
+      <Cart
+        userID={routerData.match.params.userID}
+        setCartItems={this.setCartItems}
+      />
+    );
   };
 
   renderSearchItems = () => {
@@ -320,10 +316,9 @@ class App extends Component {
   //   this.setState({counter: this.state.counter - 1})
   // }
 
-  setCartItems = (items) => {
+  setCartItems = items => {
     this.setState({ cartItems: items });
   };
-
 
   //POPULATE CATEGORIES:
 
@@ -388,7 +383,6 @@ class App extends Component {
   };
 
   //
-
 
   renderAccessories = () => {
     let sortedListingIDs = Object.keys(this.state.listings);
