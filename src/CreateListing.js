@@ -90,7 +90,7 @@ class CreateListing extends Component {
     return (
       <div>
         <div className="signUpBack" onClick={this.props.closeCreateListing} />
-        <div className="signUp">
+        <div className="createListingBox">
           {this.state.submitted ? (
             <div>
               <button className="closeButton" onClick={this.props.closeCreateListing}><img className="buttonImg" alt="" src = "/x.png" /></button>
@@ -131,6 +131,7 @@ class CreateListing extends Component {
               value={this.state.category}
               name="Category"
               onChange={this.handleCategoryChange}
+              className ="optionTest"
             >
               <option value="">Choose Category</option>
               <option>Home and Garden</option>
@@ -172,7 +173,9 @@ class CreateListing extends Component {
               onChange={e => this.uploadFile(e.target.files[0])}
               required
             />
-            <button className="uploadButton" onClick={e => document.getElementById("inputPhoto").click()}>ADD PHOTO</button>
+            <button className="uploadButton" onClick={e => document.getElementById("inputPhoto").click()}>
+            ADD PHOTO
+            </button>
             <p className="imageText">{this.state.imageInputName?this.state.imageInputName:null}</p>
             </div>
 

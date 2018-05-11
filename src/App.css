@@ -78,6 +78,14 @@ select {
   outline: 0; 
 }
 
+.optionTest {
+  background-color: white;
+}
+
+option {
+  background: none;
+}
+
 /* SEARCH */
 
 .searchInput{
@@ -267,7 +275,18 @@ select {
   top: 15%;
   left: 30%;
   background-color: white;
-  height: 600px;
+  height: 550px;
+  width: 550px;
+  /* box-shadow: 2px 5px 8px #888888; */
+  border: 2px solid black;
+}
+
+.createListingBox {
+  position: absolute;
+  top: 15%;
+  left: 30%;
+  background-color: white;
+  height: 625px;
   width: 550px;
   /* box-shadow: 2px 5px 8px #888888; */
   border: 2px solid black;
@@ -342,16 +361,16 @@ select {
 }
 
 .uploadButton {
-  margin-left: 135px;
+  /* margin-left: 135px; */
   font-weight: bold;
-  background-color: #d6f2ea;
-  width: 90px;
+  background-color: white;
+  width: 240px;
   height: 40px;
   border: 2px solid black;
 }
 
 .submitPhoto {
-  display: flex;
+  /* display: flex; */
   margin-bottom: 20px;
 }
 
@@ -379,7 +398,6 @@ select {
 
 /* VIEW ACCOUNT */
 .viewAccount{
-  display:flex;
   padding:20px;
   margin: 10px;
 flex-wrap: wrap;
