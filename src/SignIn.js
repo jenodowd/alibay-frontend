@@ -40,6 +40,7 @@ class SignIn extends Component {
           fetch("/getCart?userID=" + responseBody.userID)
             .then(res => res.json())
             .then(res => {
+              console.log(res)
               this.props.setCartItems(res.itemIDs);
             });
         } else {
@@ -88,7 +89,7 @@ class SignIn extends Component {
         <div>
         <div className="signUpBack" onClick={this.props.closeSignIn} />
         <div className="signUp">
-        <button className="closeButton" onClick={this.props.closeSignIn}><img className="buttonImg" src = "./x.png" /></button>
+        <button className="closeButton" onClick={this.props.closeSignIn}><img className="buttonImg" alt="" src = "./x.png" /></button>
           <div className="signUpForm">
           <p className = "congratsMessage">You're logged in!</p>
           <button className = "shopButton" onClick={this.props.closeSignIn}>START SHOPPING</button>
