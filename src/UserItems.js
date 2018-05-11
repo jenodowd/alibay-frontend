@@ -22,6 +22,7 @@ class UserItems extends Component {
       
       });
   }
+  
 
   setUserItems = async userItems => {
     let responses = await Promise.all(
@@ -43,8 +44,11 @@ class UserItems extends Component {
       body:body
     })
     .then(res => res.json())
-    .then((responseBody) =>this.setUserItems(responseBody.itemIDs))
-    .then(()=> this.displayUserItems())
+    .then((responseBody) =>{
+     console.log(responseBody)
+      this.setUserItems(responseBody.itemIDs)
+    })
+    .then(()=> this.componentDidMount())
   }
 
   displayUserItems = () => {
