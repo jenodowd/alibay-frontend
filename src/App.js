@@ -14,12 +14,7 @@ import ItemsBought from "./ItemsBought";
 import ItemsSold from "./ItemsSold";
 import Cart from "./Cart.js";
 import Search from "./Search.js";
-<<<<<<< HEAD
 import UserItems from "./UserItems.js";
-=======
- 
-
->>>>>>> 9f70bdb6703830e9aafe73a0ea9d4367f8927caf
 
 
 class App extends Component {
@@ -571,16 +566,12 @@ class App extends Component {
                   exact={true}
                   path="/accessories"
                   render={this.renderItemsAccessories}
-<<<<<<< HEAD
                 />
                 <Route
                   exact={true}
                   path='/userItems'
                   render={this.renderUserItems}
                   />
-=======
-                />  
->>>>>>> 9f70bdb6703830e9aafe73a0ea9d4367f8927caf
               </div>
             </div>
           </BrowserRouter>
