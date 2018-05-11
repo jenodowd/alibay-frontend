@@ -14,7 +14,8 @@ class CreateListing extends Component {
       imageInput: undefined,
       tagsInput: undefined,
       submitted: false,
-      category: ""
+      category: "",
+      imageInputName: ""
     };
   }
 
@@ -43,8 +44,10 @@ class CreateListing extends Component {
   };
 
   uploadFile = x => {
+    console.log(document.getElementById("inputPhoto"))
     let filename = x.name;
     let fileExtension = filename.split(".").pop();
+    this.setState({imageInputName : x.name})
     fetch("/uploadPic?ext=" + fileExtension, {
       method: "POST",
       body: x
@@ -90,11 +93,11 @@ class CreateListing extends Component {
         <div className="signUp">
           {this.state.submitted ? (
             <div>
-              <button className="closeButton" onClick={this.props.closeCreateListing}><img className="buttonImg" alt="" src = "../x.png" /></button>
+              <button className="closeButton" onClick={this.props.closeCreateListing}><img className="buttonImg" alt="" src = "/x.png" /></button>
               <p>Thank you for the submission!</p>
             </div>
           ) : null}
-          <button className="closeButton" onClick={this.props.closeCreateListing}><img className="buttonImg" alt="" src = "../x.png" /></button>
+          <button className="closeButton" onClick={this.props.closeCreateListing}><img className="buttonImg" alt="" src = "/x.png" /></button>
           <form
             className="signUpForm"
             onSubmit={this.handleCreateListingSubmit}
@@ -161,17 +164,19 @@ class CreateListing extends Component {
             <br />
             <br />
 
-            <input
+            <div className = "submitPhoto">
+            <input 
+              style={{display:"none"}}
               type="file"
-              id="input"
+              id="inputPhoto"
               onChange={e => this.uploadFile(e.target.files[0])}
               required
             />
+            <button className="uploadButton" onClick={e => document.getElementById("inputPhoto").click()}>ADD PHOTO</button>
+            <p className="imageText">{this.state.imageInputName?this.state.imageInputName:null}</p>
+            </div>
 
-            <br />
-            <br />
-
-            <input className = "submitButton" type="submit" />
+            <input className = "submitButton" value="SUBMIT" type="submit" />
           </form>
         </div>
       </div>
