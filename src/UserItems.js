@@ -58,19 +58,16 @@ class UserItems extends Component {
     else {
       return this.state.userItems.map(item => {
       return (
-        <div className="items">
+        <div className="viewAccount">
           <div className="items">
           <Item itemID={item.itemID}
             image={item.image}
             name={item.itemName}
             description={item.description}
             price={item.price}
+            deleteBtn
+            deleteListing={this.deleteListing}
           />
-          <button name={item.itemID}
-          className="removeButton"
-          onClick={this.deleteListing}
-          > Delete Item
-          </button>
           </div>
         </div>
       );
