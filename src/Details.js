@@ -66,7 +66,7 @@ class Details extends Component {
           <h4>${this.state.price}</h4>
           {this.state.needToSignIn? <div>Please create an account and sign in</div>: null}
           {/* //<button onClick={this.addToCart}>Add to cart</button> */}
-          {this.props.cartItems.includes(this.props.itemID)? <h5>Added to cart</h5>: <button onClick={this.addToCart}>Add to cart</button>}
+          {this.props.cartItems.includes(this.props.itemID)? <h4>ADDED TO CART</h4>: <button className="addToCart" onClick={this.addToCart}>ADD TO CART</button>}
           </div>
       </div>
           )
