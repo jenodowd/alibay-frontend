@@ -14,6 +14,9 @@ import ItemsBought from "./ItemsBought";
 import ItemsSold from "./ItemsSold";
 import Cart from "./Cart.js";
 import Search from "./Search.js";
+ 
+
+
 
 // let renderAllItems = () => {
 //   return (<div className="sideNavContainer"><SideNav /><div className="allItems">{allItems}</div></div>)
@@ -419,6 +422,41 @@ class App extends Component {
   //
 
   render() {
+    window.paypal.Button.render({
+
+      env: /*'production', // Or */'sandbox',
+
+      client: {
+          sandbox:    'AUd8sqBl5MJa4CHKQOjvkxQWN06fIRRPFO11uVRvTauWae6TSP4w2ERfDhUa_KUJmPaqGLF48zIDrbBZ',
+          //production: 'xxxxxxxxx'
+      },
+
+      commit: true, // Show a 'Pay Now' button
+
+      payment: function(data, actions) {
+          return actions.payment.create({
+              payment: {
+                  transactions: [
+                      {
+                          amount: { total: '1.00', currency: 'USD' }
+                      }
+                  ]
+              }
+          });
+      },
+
+      onAuthorize: function(data, actions) {
+          return actions.payment.execute().then(function(payment) {
+
+              // The payment is complete!
+              // You can now show a confirmation message to the customer
+          });
+      }
+
+  }, '#paypal-button');
+
+
+
     let createlisting = (() => {
       if (this.state.showCreateListing === true) {
         return (
@@ -531,11 +569,12 @@ class App extends Component {
                   exact={true}
                   path="/accessories"
                   render={this.renderItemsAccessories}
-                />
+                />  
               </div>
             </div>
           </BrowserRouter>
         </div>
+              <div id="paypal-button"></div>
       </div>
     );
   }
