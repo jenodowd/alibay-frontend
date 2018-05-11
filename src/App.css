@@ -129,7 +129,16 @@ html, body {
 }
 
 /* SIGN UP */
+.signUpBack{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  background-color: red;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
 
+}
 .signUp {
   position: absolute;
   top: 20%;
@@ -170,14 +179,17 @@ html, body {
 
 /* VIEW ACCOUNT */
 .viewAccount{
-  display:flex;
   padding:20px;
   margin: 10px;
-  width:400px;
-  height:400px;}
+flex-wrap: wrap;
 
-.accountDetails{
+
+}
+
+.accountItems{
   display:flex;
+  flex-wrap: wrap;
+
 }
 
 /* POST ITEM */

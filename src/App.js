@@ -24,8 +24,11 @@ class App extends Component {
     super();
     this.state = {
       name: undefined,
-      userID: undefined,
+      userID: "",
       listings: {},
+      homeCategory: {},
+      fashionCategory: {},
+      accessoriesCategory: {},
       showSignUp: false,
       showSignIn: false,
       showCreateListing: false,
@@ -312,6 +315,46 @@ class App extends Component {
     this.setState({ counter: val });
   };
 
+
+  //POPULATE CATEGORIES:
+
+  populateHomeCategory = () => {
+    fetch('/getItemsFromCategory?category=' + "Home and Garden", { method: 'GET'})
+    .then(response => response.text())
+    //.then(responseBody => JSON.parse(responseBody))
+    .then(responseBody => console.log(responseBody))
+    // .then(responseBody=> {
+    //   let bod = JSON.parse(responseBody);
+    //   this.setState({homeCategory: bod})
+    //   console.log(this.state.homeCategory)
+    // })
+  }
+
+  // renderHomeCategory = () => {
+  //   return this.populateHomeCategory()
+  // }
+
+  populateFashionCategory = () => {
+    fetch('/getItemsFromCategory?category=' + "Fashion", { method: 'GET'})
+    .then(response => response.text())
+    .then(responseBody=> {
+      let bod = JSON.parse(responseBody);
+      this.setState({fashionCategory: bod})
+    })
+  }
+
+  populateAccessoriesCategory = () => {
+    fetch('/getItemsFromCategory?category=' + "Accessories", { method: 'GET'})
+    .then(response => response.text())
+    .then(responseBody=> {
+      let bod = JSON.parse(responseBody);
+      this.setState({accessoriesCategory: bod})
+    })
+  }
+
+  //
+
+
   render() {
     let createlisting = (() => {
       if (this.state.showCreateListing === true) {
@@ -339,6 +382,7 @@ class App extends Component {
             setName={this.setName}
             setUserID={this.setUserID}
             setEmail={this.setEmail}
+            renderSignIn={this.renderSignIn}
             closeSignIn={this.closeSignIn}
             setCounter={this.setCounter}
           />
@@ -409,6 +453,11 @@ class App extends Component {
                   exact={true}
                   path="/cart/:userID"
                   render={this.renderCart}
+                />
+                <Route
+                  exact={true}
+                  path="/homeandgarden"
+                  render={this.populateHomeCategory}
                 />
               </div>
             </div>

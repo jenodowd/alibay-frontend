@@ -45,54 +45,110 @@ class SignIn extends Component {
           .then(res => {
             this.props.setCounter(res.itemIDs.length)
           })
-        } else console.log("login failed");
+        } else {
+          this.setState({ loginFailed: true });
+        }
       })
   };
 
+  handleLoginFail = () => {
+    //this.props.closeSignIn
+    //this.props.renderSignIn
+  };
+
   render() {
+    //LOGIN IN A VARIABLE
+    let loginForm = (
+      <div>
+      <div className="signUpBack" onClick={this.props.closeSignIn}>
+      </div>
+      <div className="signUp">
+        <button onClick={this.props.closeSignIn}>close</button>
+        <form className="signUpForm" onSubmit={this.handleLoginSubmit}>
+          <h1>Login</h1>
+
+          <input
+            className="inputField"
+            placeholder="Email"
+            type="text"
+            value={this.emailInput}
+            onChange={this.handleEmailChange}
+          />
+
+          <br />
+          <br />
+
+          <input
+            className="inputField"
+            placeholder="Password"
+            type="password"
+            value={this.passwordInput}
+            onChange={this.handlePasswordChange}
+          />
+
+          <br />
+          <br />
+
+          <input type="submit" />
+        </form>
+      </div>
+      </div>
+    );
+    //
+
     if (this.state.loggedIn === true) {
       return (
-        <div className = "signUp">
+        <div className="signUp">
           <button onClick={this.props.closeSignIn}>close</button>
-          <div className ="signUpForm" >You're logged in!</div>
+          <div className="signUpForm">You're logged in!</div>
         </div>
       );
-    } else
+    }
+
+    if (this.state.loginFailed === true) {
       return (
-        <div className = "signUp">
-        <button onClick={this.props.closeSignIn}>close</button>
-          <form className ="signUpForm" onSubmit={this.handleLoginSubmit}>
-
-            
-
-            <h1>Login</h1>
-
-            <input
-              className="inputField"
-              placeholder="Email"
-              type="text"
-              value={this.emailInput}
-              onChange={this.handleEmailChange}
-            />
-
-            <br />
-            <br />
-
-            <input
-              className="inputField"
-              placeholder="Password"
-              type="password"
-              value={this.passwordInput}
-              onChange={this.handlePasswordChange}
-            />
-
-            <br />
-            <br />
-
-            <input type="submit" />
-          </form>
+        <div className="signUp">
+          <button onClick={this.props.closeSignIn}>close</button>
+          Something went wrong!
+          {/* {loginForm} */}
+          {/* <button onClick={this.props.handleLoginFail}>Try Again?</button> */}
         </div>
       );
+    } else {
+      return loginForm;
+
+      // <div className = "signUp">
+      // <button onClick={this.props.closeSignIn}>close</button>
+      //   <form className ="signUpForm" onSubmit={this.handleLoginSubmit}>
+
+      //     <h1>Login</h1>
+
+      //     <input
+      //       className="inputField"
+      //       placeholder="Email"
+      //       type="text"
+      //       value={this.emailInput}
+      //       onChange={this.handleEmailChange}
+      //     />
+
+      //     <br />
+      //     <br />
+
+      //     <input
+      //       className="inputField"
+      //       placeholder="Password"
+      //       type="password"
+      //       value={this.passwordInput}
+      //       onChange={this.handlePasswordChange}
+      //     />
+
+      //     <br />
+      //     <br />
+
+      //     <input type="submit" />
+      //   </form>
+      // </div>
+    }
   }
 }
 
