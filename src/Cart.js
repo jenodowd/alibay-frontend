@@ -115,21 +115,24 @@ class Cart extends Component {
     });
   };
   render() {
-    return (
+    return (<div style={{display:"flex"}}>
       <div className="card">
         {this.props.name && <div className="viewAccount">My Account</div>}
         <h2>Items in your cart</h2>
-        <div>{this.renderItems()}</div>
+        <div className="cartRender">{this.renderItems()}</div>
+        </div>
+        <div className="cartDetailsBox">
         <div className="cartDetails">
         <div>
-          <button className="returnButton">
-            <Link className="link" to={"/viewaccount"}>BACK TO ACCOUNT
-            </Link>
-          </button>
+        <h4 className="cartTotal">CART TOTAL: ${this.state.sum}</h4>
         </div>
         <div id="paypal-button"></div>
         <div className="stripe"><TakeMoney/></div>
-        <div className="cartTotal">CART TOTAL: ${this.state.sum}</div>
+        <button className="returnButton">
+            <Link className="link" to={"/viewaccount"}>BACK TO ACCOUNT
+            </Link>
+        </button>
+      </div>
       </div>
     </div>
     );
