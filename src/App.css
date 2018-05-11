@@ -319,3 +319,13 @@ flex-wrap: wrap;
 }
 /*CART BUTTONS*/
 
+
+/*BACK BUTTONS*/
+.backButton {
+background:none;
+border:none
+}
+
+.arrowImg{
+  height:20px;
+}
