@@ -7,7 +7,8 @@ class Cart extends Component {
   constructor() {
     super();
     this.state = {
-      itemIDs: []
+      itemIDs: [],
+      total: ''
     };
   }
 
@@ -98,14 +99,9 @@ class Cart extends Component {
             name={item.itemName}
             description={item.description}
             price={item.price}
+            removeBtn
+            removeCart={this.removeCart}
           />
-          <button
-            name={item.itemID}
-            className="removeButton"
-            onClick={this.removeCart}
-          >
-            Remove from cart
-          </button>
         </div>
       );
     });
@@ -119,7 +115,8 @@ class Cart extends Component {
         <div className="cartDetails">
         <div>
           <button className="returnButton">
-            <Link className="link" to={"/viewaccount"}>BACK TO ACCOUNT</Link>
+            <Link className="link" to={"/viewaccount"}>BACK TO ACCOUNT
+            </Link>
           </button>
         </div>
         <div id="paypal-button"></div>

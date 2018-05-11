@@ -4,7 +4,6 @@ import './App.css';
 
 class Item extends Component {
   render() {
-    console.log(this.props.image)
     return (
       <div className="card">
       <div>
@@ -13,6 +12,14 @@ class Item extends Component {
         </Link>
           <div>{this.props.name}</div>
           <div>${this.props.price}</div>
+        {this.props.removeBtn?  
+        <button
+          name={this.props.itemID}
+          className="removeButton"
+          onClick={this.props.removeCart}
+        >
+          Remove from cart
+        </button> : null}
       </div>
       </div>
           )
