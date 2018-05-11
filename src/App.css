@@ -3,13 +3,27 @@ html, body {
   padding: 0;
 }
 
+h1 {
+  font-size: 30px;
+}
+
 /* ALL LINKS */
+
+button { 
+  outline: 0; 
+}
 
 .link {
   text-decoration: none;
   color: black;
 }
 
+.noButton {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+}
 /* ALL FORMS */
 
 .inputField{
@@ -20,6 +34,7 @@ html, body {
   width: 220px;
   padding: 5px;
   padding-left: 10px;
+  outline: 0; 
 }
 
 .areaField{
@@ -30,6 +45,7 @@ html, body {
   width: 220px;
   padding: 5px;
   padding-left: 10px;
+  outline: 0; 
 }
 
 select {
@@ -48,6 +64,20 @@ select {
   padding: 5px;
   padding-right: 20px;
   padding-left: 10px;
+  outline: 0; 
+}
+
+/* SEARCH */
+
+.searchInput{
+  font-size: 15px;
+  border: 2px solid black;
+  color: black;
+  height: 25px;
+  width: 180px;
+  padding: 5px;
+  padding-left: 10px;
+  outline: 0; 
 }
 
 /* PLACEHOLDER TEXT */
@@ -139,7 +169,7 @@ select {
   list-style-type: none;
   text-align: right;
   padding: 0;
-  font-size: 14px;
+  font-size: 15px;
   vertical-align: middle;
 }
 
@@ -197,10 +227,10 @@ select {
 
 .signUp {
   position: absolute;
-  top: 18%;
+  top: 15%;
   left: 30%;
   background-color: white;
-  height: 550px;
+  height: 600px;
   width: 550px;
   /* box-shadow: 2px 5px 8px #888888; */
   border: 2px solid black;
@@ -274,6 +304,25 @@ select {
   margin-top: 50px;
 }
 
+.uploadButton {
+  margin-left: 135px;
+  font-weight: bold;
+  background-color: #d6f2ea;
+  width: 90px;
+  height: 40px;
+  border: 2px solid black;
+}
+
+.submitPhoto {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.imageText {
+  font-size: 8pt;
+  margin: 10px;
+}
+
 /* DETAILS */
 .details {
   display: flex;
@@ -293,6 +342,7 @@ select {
 
 /* VIEW ACCOUNT */
 .viewAccount{
+  display:flex;
   padding:20px;
   margin: 10px;
 flex-wrap: wrap;

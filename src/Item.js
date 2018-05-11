@@ -20,6 +20,12 @@ class Item extends Component {
         >
           Remove from cart
         </button> : null}
+        {this.props.deleteBtn? 
+          <button name={this.props.itemID}
+          className="removeButton"
+          onClick={this.props.deleteListing}
+          > Delete Item
+          </button>: null}
       </div>
       </div>
           )
