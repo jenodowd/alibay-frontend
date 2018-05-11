@@ -574,7 +574,6 @@ class App extends Component {
             </div>
           </BrowserRouter>
         </div>
-              <div id="paypal-button"></div>
       </div>
     );
   }
