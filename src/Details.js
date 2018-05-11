@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { listings } from './FakeData.js';
 import './App.css';
 
@@ -50,10 +50,15 @@ class Details extends Component {
       })
     }
   }
+
+  goBack = () => {
+    window.history.back()
+  }
   render() {
     //console.log(this.state.image)
     return (
       <div className="details">
+          <div><button className="backButton" onClick={this.goBack}><img className="arrowImg" src='../arrow.png'></img></button></div>
           <img className="detailImg" src={"/"+this.state.image} alt="null" />
           <div className="detailTxt">
           <h2>{this.state.itemName}</h2>

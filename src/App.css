@@ -351,5 +351,37 @@ flex-wrap: wrap;
 .cartImg {
   height: 30px;
 }
-/*CART BUTTONS*/
 
+.cartCounter {
+  float: right;
+  font-weight: bold;
+  margin-top: 7px
+}
+
+.accountNavName {
+  display: inline;
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size-adjust: 300%
+} 
+
+.removeButton {
+  font-weight: bold;
+  background-color: #fdfcd3;
+  text-align: left;
+  width: 130px;
+  height: 30px;
+  border: 2px solid black;
+  margin-top: 5px
+}
+
+/*BACK BUTTONS*/
+.backButton {
+background:none;
+border:none
+}
+
+.arrowImg{
+  height:20px;
+}
