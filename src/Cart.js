@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 import Item from "./Item.js";
+import TakeMoney from "./Stripe.js"
 
 class Cart extends Component {
   constructor() {
     super();
     this.state = {
       itemIDs: [],
-      total: ''
+      sum: ''
     };
   }
 
@@ -24,12 +25,13 @@ class Cart extends Component {
 
       commit: true, // Show a 'Pay Now' button
 
-      payment: function(data, actions) {
+      payment: (data, actions) => {
+        console.log(this.state.sum)
           return actions.payment.create({
               payment: {
                   transactions: [
                       {
-                          amount: { total: '1.00', currency: 'USD' }
+                          amount: { total: this.state.sum, currency: 'CAD' }
                       }
                   ]
               }
@@ -71,7 +73,13 @@ class Cart extends Component {
       ...res.details,
       itemID: itemIDs[i]
     }));
-    this.setState({ itemIDs: itemObjects });
+
+    let cartTotal = Object.keys(responses).map((res) => {return responses[res].details.price})
+    let sum=0;
+    for (let i=0; i<cartTotal.length; i++) {
+      sum += parseInt(cartTotal[i]);
+    }
+    this.setState({ itemIDs: itemObjects, sum: sum});
   };
 
   removeCart = e => {
@@ -120,6 +128,8 @@ class Cart extends Component {
           </button>
         </div>
         <div id="paypal-button"></div>
+        <div className="stripe"><TakeMoney/></div>
+        <div className="cartTotal">CART TOTAL: ${this.state.sum}</div>
       </div>
     </div>
     );

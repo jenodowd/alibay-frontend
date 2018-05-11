@@ -376,6 +376,17 @@ flex-wrap: wrap;
   margin-top: 5px
 }
 
+.cartTotal {
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center
+}
+
+.stripe {
+  margin-top: 10px;
+  margin-left: 12px
+}
+
 /*BACK BUTTONS*/
 .backButton {
 background:none;
