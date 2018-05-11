@@ -22,13 +22,8 @@ class ViewAccount extends Component {
         <div><h1>My account </h1>
         <div>Name: {this.props.name}</div>
         <div>Email: {this.props.email}</div>
-<<<<<<< HEAD
         <div>Password *********  </div>
         <div> <button className="password">CHANGE ACCOUNT INFO</button></div>
-=======
-        <div>Password: *********  </div>
-        <div> <button className="removeButton">Change password</button></div>
->>>>>>> be8dd6455dc023434720205b2654546c71ae6a4f
         </div>
         <div>
         <div ><UserItems userID={this.props.userID}/></div>
