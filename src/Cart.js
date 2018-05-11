@@ -16,7 +16,6 @@ class Cart extends Component {
   }
 
   getAllItems = () => {
-    console.log("HH")
     fetch("/getCart?userID=" + this.props.userID, {
       method: "GET"
     })
@@ -24,7 +23,6 @@ class Cart extends Component {
       .then(resB => {
         let parsed = JSON.parse(resB);
         let itemIDs = parsed.itemIDs;
-        console.log(itemIDs);
         this.getCartItemDetails(itemIDs);
       });
   };
@@ -61,7 +59,6 @@ class Cart extends Component {
 
   renderItems = () => {
     return this.state.itemIDs.map((item) => {
-      console.log(item);
       return (
         <div className="items">
           <Item
