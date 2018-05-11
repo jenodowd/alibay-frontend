@@ -12,7 +12,38 @@ class Cart extends Component {
   }
 
   componentDidMount() {
-    this.getAllItems()
+    this.getAllItems();
+    window.paypal.Button.render({
+
+      env: 'sandbox',
+
+      client: {
+          sandbox:    'AUd8sqBl5MJa4CHKQOjvkxQWN06fIRRPFO11uVRvTauWae6TSP4w2ERfDhUa_KUJmPaqGLF48zIDrbBZ',
+      },
+
+      commit: true, // Show a 'Pay Now' button
+
+      payment: function(data, actions) {
+          return actions.payment.create({
+              payment: {
+                  transactions: [
+                      {
+                          amount: { total: '1.00', currency: 'USD' }
+                      }
+                  ]
+              }
+          });
+      },
+
+      onAuthorize: function(data, actions) {
+          return actions.payment.execute().then(function(payment) {
+
+              // The payment is complete!
+              // You can now show a confirmation message to the customer
+          });
+      }
+
+  }, '#paypal-button');
   }
 
   getAllItems = () => {
@@ -85,15 +116,15 @@ class Cart extends Component {
         {this.props.name && <div className="viewAccount">My Account</div>}
         <h2>Items in your cart</h2>
         <div>{this.renderItems()}</div>
+        <div className="cartDetails">
         <div>
-          <button>
-            <Link className="link" to={"/viewaccount"}>
-              Return to your account
-            </Link>
+          <button className="returnButton">
+            <Link className="link" to={"/viewaccount"}>BACK TO ACCOUNT</Link>
           </button>
-          <div id="paypal-button"></div>
         </div>
+        <div id="paypal-button"></div>
       </div>
+    </div>
     );
   }
 }

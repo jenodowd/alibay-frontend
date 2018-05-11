@@ -206,4 +206,34 @@ flex-wrap: wrap;
   margin-top: 90px;
 }
 
-/*CART BUTTONS*/
+/*CART PG BUTTONS*/
+
+.returnButton {
+  font-weight: bold;
+  background-color: #f6cac9;
+  width: 148px;
+  height: 30px;
+  border: 2px solid black;
+}
+
+#paypal-button {
+  margin-top: 13px;
+}
+
+.cartDetails {
+  position: absolute;
+  right: 2%;
+  top: 16%;
+}
+
+/*SHOPPING CART ON ACCOUNTNAV*/
+
+.cartButton {
+  background: none;
+  border: none;
+  float: right
+}
+
+.cartImg {
+  height: 30px;
+}
