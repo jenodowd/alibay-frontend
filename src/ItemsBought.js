@@ -15,7 +15,6 @@ class ItemsBought extends Component {
       .then(response => response.text())
       .then(responseBody => {
         let parsed = JSON.parse(responseBody);
-        console.log(parsed)
         if (parsed.success){
         let itemsBought = parsed.itemIDs;
         this.setBoughtItems(itemsBought);

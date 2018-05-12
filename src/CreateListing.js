@@ -44,10 +44,10 @@ class CreateListing extends Component {
   };
 
   uploadFile = x => {
-    console.log(document.getElementById("inputPhoto"))
+    console.log(document.getElementById("inputPhoto"));
     let filename = x.name;
     let fileExtension = filename.split(".").pop();
-    this.setState({imageInputName : x.name})
+    this.setState({ imageInputName: x.name });
     fetch("/uploadPic?ext=" + fileExtension, {
       method: "POST",
       body: x
@@ -93,16 +93,26 @@ class CreateListing extends Component {
         <div className="createListingBox">
           {this.state.submitted ? (
             <div>
-              <button className="closeButton" onClick={this.props.closeCreateListing}><img className="buttonImg" alt="" src = "/x.png" /></button>
+              <button
+                className="closeButton"
+                onClick={this.props.closeCreateListing}
+              >
+                <img className="buttonImg" alt="" src="/x.png" />
+              </button>
               <p>Thank you for the submission!</p>
             </div>
           ) : null}
-          <button className="closeButton" onClick={this.props.closeCreateListing}><img className="buttonImg" alt="" src = "/x.png" /></button>
+          <button
+            className="closeButton"
+            onClick={this.props.closeCreateListing}
+          >
+            <img className="buttonImg" alt="" src="/x.png" />
+          </button>
           <form
             className="signUpForm"
             onSubmit={this.handleCreateListingSubmit}
           >
-            <h1 className = "postHeader">Create Listing</h1>
+            <h1 className="postHeader">Create Listing</h1>
             <input
               className="inputField"
               placeholder="Name"
@@ -126,20 +136,21 @@ class CreateListing extends Component {
 
             <br />
             <br />
-
-            <select
-              value={this.state.category}
-              name="Category"
-              onChange={this.handleCategoryChange}
-              className ="optionTest"
-            >
-              <option value="">Choose Category</option>
-              <option>Home and Garden</option>
-              <option>Fashion</option>
-              <option>Accessories</option>
-            </select>
-
-            <br />
+            <div style={{ position: "relative" }}>
+              <select
+                className="select"
+                value={this.state.category}
+                name="Category"
+                onChange={this.handleCategoryChange}
+              >
+                <option style={{ backgroundColor: "red" }} value="">
+                  Choose Category
+                </option>
+                <option>Home and Garden</option>
+                <option>Fashion</option>
+                <option>Accessories</option>
+              </select>
+            </div>
             <br />
 
             <textarea
@@ -165,21 +176,26 @@ class CreateListing extends Component {
             <br />
             <br />
 
-            <div className = "submitPhoto">
-            <input 
-              style={{display:"none"}}
-              type="file"
-              id="inputPhoto"
-              onChange={e => this.uploadFile(e.target.files[0])}
-              required
-            />
-            <button className="uploadButton" onClick={e => document.getElementById("inputPhoto").click()}>
-            ADD PHOTO
-            </button>
-            <p className="imageText">{this.state.imageInputName?this.state.imageInputName:null}</p>
+            <div className="submitPhoto">
+              <input
+                style={{ display: "none" }}
+                type="file"
+                id="inputPhoto"
+                onChange={e => this.uploadFile(e.target.files[0])}
+                required
+              />
+              <button
+                className="uploadButton"
+                onClick={e => document.getElementById("inputPhoto").click()}
+              >
+                ADD PHOTO
+              </button>
+              <p className="imageText">
+                {this.state.imageInputName ? this.state.imageInputName : null}
+              </p>
             </div>
 
-            <input className = "submitButton" value="SUBMIT" type="submit" />
+            <input className="submitButton" value="SUBMIT" type="submit" />
           </form>
         </div>
       </div>
