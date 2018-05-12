@@ -10,7 +10,7 @@ class Item extends Component {
         <Link to={"/details/" + this.props.itemID}> 
           <img className="images" src={'/' + this.props.image} alt="null" linkto/>
         </Link>
-          <div>{this.props.name}</div>
+          <div className ="itemName">{this.props.name}</div>
           <div className="price">${this.props.price}</div>
         {this.props.removeBtn?  
         <button
@@ -18,7 +18,7 @@ class Item extends Component {
           className="removeButton"
           onClick={this.props.removeCart}
         >
-          Remove from cart
+          REMOVE FROM CART
         </button> : null}
         {this.props.deleteBtn? 
           <button name={this.props.itemID}
