@@ -488,7 +488,7 @@ flex-wrap: wrap;
   font-weight: bold;
   background-color: #fdfcd3;
   text-align: left;
-  width: 130px;
+  width: 160px;
   height: 30px;
   border: 2px solid black;
   margin-top: 5px
@@ -542,7 +542,8 @@ border:none
   width: 185px;
   height: 30px;
   border: 2px solid black;
-  margin-top: 5px
+  margin-top: 5px;
+  margin-bottom: 30px
 }
 .deleteButton {
   font-weight: bold;

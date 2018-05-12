@@ -77,7 +77,7 @@ class Cart extends Component {
     let cartTotal = Object.keys(responses).map((res) => {return responses[res].details.price})
     let sum=0;
     for (let i=0; i<cartTotal.length; i++) {
-      sum += parseInt(cartTotal[i]);
+      sum += Number(cartTotal[i]);
     }
     this.setState({ itemIDs: itemObjects, sum: sum});
   };

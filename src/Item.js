@@ -18,7 +18,7 @@ class Item extends Component {
           className="removeButton"
           onClick={this.props.removeCart}
         >
-          Remove from cart
+         REMOVE FROM CART
         </button> : null}
         {this.props.deleteBtn? 
           <button name={this.props.itemID}

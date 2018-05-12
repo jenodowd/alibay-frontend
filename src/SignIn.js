@@ -7,8 +7,8 @@ class SignIn extends Component {
     super();
 
     this.state = {
-      emailInput: "caroline.song@email.com",
-      passwordInput: "bye123",
+      emailInput: "",
+      passwordInput: "",
       loggedIn: false
     };
   }
