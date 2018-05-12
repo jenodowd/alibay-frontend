@@ -490,9 +490,15 @@ flex-wrap: wrap;
 .removeButton {
   font-weight: bold;
   background-color: #fdfcd3;
+<<<<<<< HEAD
   /* text-align: left; */
   width: 160px;
   height: 40px;
+=======
+  text-align: left;
+  width: 160px;
+  height: 30px;
+>>>>>>> 34aa27de9744dc368916946d849e817f57cceb4f
   border: 2px solid black;
   margin-top: 10px
 }
@@ -554,7 +560,12 @@ border:none
   width: 185px;
   height: 40px;
   border: 2px solid black;
+<<<<<<< HEAD
   margin-top: 15px
+=======
+  margin-top: 5px;
+  margin-bottom: 30px
+>>>>>>> 34aa27de9744dc368916946d849e817f57cceb4f
 }
 .deleteButton {
   font-weight: bold;

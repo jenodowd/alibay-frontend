@@ -14,7 +14,7 @@ class ItemsSold extends Component {
       .then(response => response.text())
       .then(responseBody => {
         let parsed = JSON.parse(responseBody);
-        if (responseBody.success){
+        if (parsed.success){
         let itemsSold = parsed.itemIDs;
         this.setSoldItems(itemsSold);
         }
@@ -30,6 +30,7 @@ class ItemsSold extends Component {
     );
     let itemObjects = responses.map((res, i) => ({ ...res.details, itemID: itemsSold[i] }));
     this.setState({ itemsSold: itemObjects });
+    console.log(this.state.itemsSold)
   };
 
   displayItemsSold = () => {
